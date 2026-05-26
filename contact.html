@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRE8 Studio — Book a Session | Cannock</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Splitting.js -->
+  <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css">
+  <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting-cells.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* ── CONTACT FORM ── */
+    .contact-form { display: flex; flex-direction: column; gap: 24px; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+    .form-group { display: flex; flex-direction: column; gap: 8px; }
+
+    .form-label {
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .form-input {
+      background: var(--surface-mid);
+      border: 0.5px solid var(--border-dim);
+      border-radius: 2px;
+      color: var(--cream);
+      font-family: var(--font-body);
+      font-size: 14px;
+      padding: 14px 16px;
+      width: 100%;
+      transition: border-color var(--t-base);
+      outline: none;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+    .form-input::placeholder { color: var(--muted); opacity: 0.5; }
+    .form-input:focus { border-color: var(--orange); }
+    .form-textarea { resize: vertical; min-height: 130px; }
+
+    select.form-input {
+      cursor: pointer;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23888' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+    select.form-input option { background: var(--surface-mid); color: var(--cream); }
+
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr !important; }
+      .form-row     { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">CRE<span>8</span> STUDIO</a>
+    <ul class="nav-links">
+      <li><a href="music.html">Music</a></li>
+      <li><a href="podcast.html">Podcast</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="nav-cta">Book Now</a></li>
+    </ul>
+    <div class="nav-hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <div class="nav-overlay">
+    <a href="music.html">Music</a>
+    <a href="podcast.html">Podcast</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" style="color:var(--orange)">Book Now</a>
+  </div>
+
+
+  <!-- ── 1. PAGE HERO ── -->
+  <section class="page-hero" style="min-height:320px">
+    <span class="label-line page-hero-label" style="margin-bottom:20px">Get In Touch</span>
+    <h1 class="page-hero-title t-display-xl" style="color:var(--cream)">BOOK A<br>SESSION</h1>
+    <p class="page-hero-sub t-body-lg" style="max-width:500px; margin-top:20px">
+      Ready to record? Fill in the form and we'll be in touch to get your session sorted. Music, podcast, or both.
+    </p>
+  </section>
+
+
+  <!-- ── 2. FORM + CONTACT INFO ── -->
+  <div class="contact-grid" style="display:grid; grid-template-columns:1.4fr 1fr; gap:var(--panel-gap); margin-top:var(--panel-gap)">
+
+    <!-- Enquiry Form -->
+    <div style="background:var(--surface); padding:60px 52px" data-reveal>
+      <h2 style="font-family:var(--font-display); font-size:44px; color:var(--cream); margin-bottom:36px; line-height:0.95">ENQUIRY<br>FORM</h2>
+
+      <form class="contact-form" action="#" method="post" novalidate>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label" for="name">Your Name</label>
+            <input type="text" id="name" name="name" class="form-input" placeholder="First &amp; last name" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email">Email Address</label>
+            <input type="email" id="email" name="email" class="form-input" placeholder="you@example.com" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="service">What Are You Booking?</label>
+          <select id="service" name="service" class="form-input">
+            <option value="">Select a service...</option>
+            <option value="music-hourly">Music — Hourly (£45/hr solo / £75/hr multi-track)</option>
+            <option value="music-half">Music — Half Day (£250 / 4hrs)</option>
+            <option value="music-full">Music — Full Day (£450 / 8hrs)</option>
+            <option value="podcast-hourly">Podcast — Hourly (£45/hr audio / £75/hr audio+video)</option>
+            <option value="podcast-half">Podcast — Half Day (£250 / 4hrs)</option>
+            <option value="podcast-full">Podcast — Full Day (£450 / 8hrs)</option>
+            <option value="not-sure">Not sure yet — want to discuss</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="date">Preferred Date / Timeframe</label>
+          <input type="text" id="date" name="date" class="form-input" placeholder="e.g. Any weekend in June, or ASAP">
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="message">Tell Us About Your Project</label>
+          <textarea id="message" name="message" class="form-input form-textarea" placeholder="What are you recording? Any specific requirements? The more detail the better." required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary" style="width:100%; justify-content:center; padding:16px; font-size:13px">
+          Send Enquiry →
+        </button>
+
+      </form>
+    </div>
+
+    <!-- Contact Info -->
+    <div style="background:var(--off-black); padding:60px 44px; display:flex; flex-direction:column; gap:var(--space-lg)" data-reveal>
+
+      <div>
+        <span class="t-label" style="display:block; margin-bottom:16px">Find Us</span>
+        <h3 style="font-family:var(--font-display); font-size:36px; color:var(--cream); margin-bottom:10px; line-height:0.95">CRE8 STUDIO</h3>
+        <p class="t-body">Cannock, Staffordshire<br>West Midlands, UK</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <div>
+        <span class="t-label" style="display:block; margin-bottom:16px">Social</span>
+        <a href="https://instagram.com/cre8_cannock" target="_blank" rel="noopener noreferrer" class="social-link" style="font-family:var(--font-ui); font-size:18px; font-weight:600; color:var(--cream); letter-spacing:0.06em; display:block; margin-bottom:6px; transition:color 0.2s">@cre8_cannock</a>
+        <a href="https://cre8-studio.net" target="_blank" rel="noopener noreferrer" class="social-link" style="font-family:var(--font-ui); font-size:14px; color:var(--muted); letter-spacing:0.06em; display:block; transition:color 0.2s">cre8-studio.net</a>
+      </div>
+
+      <div class="divider"></div>
+
+      <div>
+        <span class="t-label" style="display:block; margin-bottom:16px">Studio Hours</span>
+        <p class="t-body" style="margin-bottom:6px">Flexible to suit your schedule.</p>
+        <p class="t-body">Sessions can be booked mornings, afternoons, evenings and weekends. Get in touch to find a time that works.</p>
+      </div>
+
+      <div class="divider"></div>
+
+      <!-- Quick reference pricing -->
+      <div>
+        <span class="t-label" style="display:block; margin-bottom:16px">Quick Reference</span>
+        <div style="display:flex; flex-direction:column; gap:10px">
+          <div style="display:flex; justify-content:space-between; align-items:center; font-family:var(--font-ui); font-size:12px; letter-spacing:0.06em">
+            <span style="color:var(--muted)">Hourly (Solo / Music)</span>
+            <span style="color:var(--orange); font-weight:700">£45/hr</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; font-family:var(--font-ui); font-size:12px; letter-spacing:0.06em">
+            <span style="color:var(--muted)">Hourly (Multi-Track / A+V)</span>
+            <span style="color:var(--orange); font-weight:700">£75/hr</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; font-family:var(--font-ui); font-size:12px; letter-spacing:0.06em">
+            <span style="color:var(--muted)">Half Day (4hrs)</span>
+            <span style="color:var(--orange); font-weight:700">£250</span>
+          </div>
+          <div style="display:flex; justify-content:space-between; align-items:center; font-family:var(--font-ui); font-size:12px; letter-spacing:0.06em">
+            <span style="color:var(--muted)">Full Day (8hrs)</span>
+            <span style="color:var(--orange); font-weight:700">£450</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- ── 3. MAP EMBED ── -->
+  <div style="margin-top:var(--panel-gap); height:380px; background:var(--surface); position:relative; overflow:hidden" data-reveal>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d38863.80!2d-2.03!3d52.69!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4870b91e86cb9e15%3A0x2b!2sCannock%2C+Staffordshire!5e0!3m2!1sen!2suk!4v1"
+      width="100%"
+      height="380"
+      style="border:0; filter:grayscale(100%) invert(90%) contrast(1.1); opacity:0.7"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+      title="CRE8 Studio location — Cannock, Staffordshire"
+    ></iframe>
+    <div style="position:absolute; bottom:0; left:0; right:0; height:40px; background:linear-gradient(to top, var(--black), transparent); pointer-events:none"></div>
+  </div>
+
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div>
+      <div class="footer-logo">CRE<span>8</span> STUDIO</div>
+      <div class="footer-location">Cannock · Staffordshire</div>
+    </div>
+    <div class="footer-info">
+      <div><a href="https://instagram.com/cre8_cannock" target="_blank" rel="noopener noreferrer">@cre8_cannock</a></div>
+      <div><a href="https://cre8-studio.net" target="_blank" rel="noopener noreferrer">cre8-studio.net</a></div>
+      <div>Cannock, Staffordshire</div>
+    </div>
+    <nav class="footer-nav">
+      <a href="music.html">Music Packages</a>
+      <a href="podcast.html">Podcast Packages</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="footer-cta">Book Now →</a>
+    </nav>
+    <div class="footer-bottom">
+      <p>© 2025 CRE8 Studio Cannock. All rights reserved.</p>
+      <p>Professional Recording · Cannock · Staffordshire</p>
+    </div>
+  </footer>
+
+
+  <!-- ── SCRIPTS ── -->
+  <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Social link hover (clean JS alternative to inline handlers)
+    document.querySelectorAll('.social-link').forEach(link => {
+      link.addEventListener('mouseenter', () => { link.style.color = 'var(--orange)'; });
+      link.addEventListener('mouseleave', () => {
+        link.style.color = link.href.includes('instagram') ? 'var(--cream)' : 'var(--muted)';
+      });
+    });
+  });
+  </script>
+
+</body>
+</html>

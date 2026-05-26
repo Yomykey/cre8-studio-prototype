@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRE8 Studio — About | Cannock</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Splitting.js -->
+  <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css">
+  <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting-cells.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    @media (max-width: 768px) {
+      .about-intro-grid { grid-template-columns: 1fr !important; }
+      .about-equip-grid { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">CRE<span>8</span> STUDIO</a>
+    <ul class="nav-links">
+      <li><a href="music.html">Music</a></li>
+      <li><a href="podcast.html">Podcast</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="nav-cta">Book Now</a></li>
+    </ul>
+    <div class="nav-hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <div class="nav-overlay">
+    <a href="music.html">Music</a>
+    <a href="podcast.html">Podcast</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" style="color:var(--orange)">Book Now</a>
+  </div>
+
+
+  <!-- ── 1. PAGE HERO ── -->
+  <section class="page-hero" style="min-height:460px">
+    <span class="label-line page-hero-label" style="margin-bottom:20px">The Person Behind The Studio</span>
+    <h1 class="page-hero-title t-display-xl" style="color:var(--cream)">ABOUT<br>CRE8</h1>
+    <p class="page-hero-sub t-body-lg" style="max-width:540px; margin-top:20px">
+      Everything produced on site, by one person, from first take to final master. No hand-offs. No compromises. Just your sound, done properly.
+    </p>
+    <div aria-hidden="true" style="position:absolute; top:40px; right:60px; font-family:var(--font-display); font-size:300px; color:rgba(232,88,10,0.03); line-height:1; pointer-events:none; user-select:none">8</div>
+  </section>
+
+
+  <!-- ── 2. OWNER INTRO — EDITORIAL SPLIT ── -->
+  <section class="about-intro-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:var(--panel-gap); margin-top:var(--panel-gap)">
+
+    <div style="background:var(--surface); padding:72px 60px; display:flex; flex-direction:column; justify-content:center" data-reveal>
+      <span class="label-line" style="margin-bottom:28px">Who I Am</span>
+      <blockquote class="t-serif-lg" style="color:var(--cream); margin-bottom:32px">
+        "Everything you hear, from the recording to the final master, is done by <em>me</em> — on site, in one place."
+      </blockquote>
+      <p class="t-body" style="margin-bottom:20px">
+        CRE8 Studio is a professional recording studio in Cannock, Staffordshire. I set it up because I believe artists and podcasters deserve studio-quality results without the corporate experience or the London price tag.
+      </p>
+      <p class="t-body">
+        Whether you're a solo artist recording your first EP, a band tracking a full production, or a podcaster building an audience — I work with you directly to make sure what you walk out with sounds exactly how it should.
+      </p>
+    </div>
+
+    <div style="background:var(--surface-mid); position:relative; overflow:hidden; min-height:400px" data-reveal>
+      <img
+        src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=900&q=80"
+        alt="CRE8 Studio recording environment — professional mixing desk and equipment"
+        style="width:100%; height:100%; object-fit:cover; position:absolute; inset:0; opacity:0.6"
+        loading="lazy"
+      >
+      <div style="position:absolute; inset:0; background:linear-gradient(to top, rgba(10,10,10,0.8) 0%, transparent 50%)"></div>
+      <div style="position:absolute; bottom:40px; left:40px">
+        <div style="font-family:var(--font-display); font-size:56px; color:var(--cream); line-height:1">CRE8<br>STUDIO</div>
+        <div style="font-family:var(--font-ui); font-size:11px; letter-spacing:0.16em; text-transform:uppercase; color:var(--muted); margin-top:8px">Cannock · Staffordshire</div>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- ── 3. ETHOS STRIP ── -->
+  <div style="background:var(--off-black); padding:80px var(--space-xl); text-align:center; margin-top:var(--panel-gap)" data-reveal>
+    <span class="t-label-muted" style="display:block; margin-bottom:20px">The CRE8 Way</span>
+    <h2 style="font-family:var(--font-display); font-size:clamp(48px,6vw,84px); line-height:0.92; color:var(--cream); max-width:800px; margin:0 auto 28px">FROM FIRST TAKE<br>TO <span style="color:var(--orange)">FINAL MASTER.</span></h2>
+    <p class="t-body-lg" style="max-width:560px; margin:0 auto">
+      Recording, production, mixing, mastering — and video if you want it. All in one session, all in one place, all by one person who is genuinely invested in making your project sound great.
+    </p>
+  </div>
+
+
+  <!-- ── 4. EQUIPMENT HIGHLIGHTS ── -->
+  <div class="about-equip-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:var(--panel-gap); margin-top:var(--panel-gap)" data-reveal-group>
+
+    <div style="background:var(--surface); padding:44px 36px" data-reveal-item>
+      <div style="font-family:var(--font-display); font-size:48px; color:var(--orange); line-height:1; margin-bottom:16px">⦿</div>
+      <h3 style="font-family:var(--font-display); font-size:32px; color:var(--cream); margin-bottom:12px">RECORDING</h3>
+      <p class="t-body">High quality preamps, professional condenser microphones, and a treated acoustic environment for clean, detailed recording. No digital noise. No compromise.</p>
+    </div>
+
+    <div style="background:var(--surface-mid); padding:44px 36px" data-reveal-item>
+      <div style="font-family:var(--font-display); font-size:48px; color:var(--orange); line-height:1; margin-bottom:16px">⧫</div>
+      <h3 style="font-family:var(--font-display); font-size:32px; color:var(--cream); margin-bottom:12px">PRODUCTION</h3>
+      <p class="t-body">Professional DAW setup with an extensive plugin suite for mixing and mastering. Industry-standard monitoring so what you hear in the room is what comes out of the speakers everywhere else.</p>
+    </div>
+
+    <div style="background:var(--surface); padding:44px 36px" data-reveal-item>
+      <div style="font-family:var(--font-display); font-size:48px; color:var(--orange); line-height:1; margin-bottom:16px">▣</div>
+      <h3 style="font-family:var(--font-display); font-size:32px; color:var(--cream); margin-bottom:12px">VIDEO</h3>
+      <p class="t-body">Multi-camera setup with live switching for podcast and music sessions. Deliver social-ready reels, full episode recordings, and studio footage — all in the same session.</p>
+    </div>
+
+  </div>
+
+
+  <!-- ── 5. CTA ── -->
+  <div style="background:var(--orange); padding:var(--space-2xl) var(--space-xl); display:flex; align-items:center; justify-content:space-between; gap:var(--space-xl); flex-wrap:wrap; margin-top:var(--panel-gap)">
+    <div>
+      <h2 style="font-family:var(--font-display); font-size:clamp(52px,6vw,80px); line-height:0.9; color:var(--black); margin-bottom:20px">READY TO<br>CREATE?</h2>
+      <p style="font-size:14px; color:rgba(0,0,0,0.6); max-width:340px; margin-bottom:28px; font-weight:300">Let's get your session booked. Music, podcast, or both — get in touch and we'll make it happen.</p>
+      <a href="contact.html" class="btn btn-dark">Book a Session →</a>
+    </div>
+    <div aria-hidden="true" style="font-family:var(--font-display); font-size:clamp(80px,14vw,200px); color:rgba(0,0,0,0.06); line-height:1; user-select:none">CRE8</div>
+  </div>
+
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div>
+      <div class="footer-logo">CRE<span>8</span> STUDIO</div>
+      <div class="footer-location">Cannock · Staffordshire</div>
+    </div>
+    <div class="footer-info">
+      <div><a href="https://instagram.com/cre8_cannock" target="_blank" rel="noopener noreferrer">@cre8_cannock</a></div>
+      <div><a href="https://cre8-studio.net" target="_blank" rel="noopener noreferrer">cre8-studio.net</a></div>
+      <div>Cannock, Staffordshire</div>
+    </div>
+    <nav class="footer-nav">
+      <a href="music.html">Music Packages</a>
+      <a href="podcast.html">Podcast Packages</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="footer-cta">Book Now →</a>
+    </nav>
+    <div class="footer-bottom">
+      <p>© 2025 CRE8 Studio Cannock. All rights reserved.</p>
+      <p>Professional Recording · Cannock · Staffordshire</p>
+    </div>
+  </footer>
+
+
+  <!-- ── SCRIPTS ── -->
+  <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>

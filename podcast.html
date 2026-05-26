@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CRE8 Studio — Podcast Packages | Cannock</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <!-- Splitting.js -->
+  <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css">
+  <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting-cells.css">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* ── FAQ ACCORDION ── */
+    .faq-list { border-top: 0.5px solid var(--border-dim); }
+    .faq-item  { border-bottom: 0.5px solid var(--border-dim); }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 24px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-family: var(--font-ui);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--cream);
+      text-align: left;
+      gap: 20px;
+      transition: color var(--t-base);
+    }
+    .faq-question:hover { color: var(--orange); }
+
+    .faq-icon {
+      font-size: 22px;
+      font-weight: 300;
+      color: var(--orange);
+      flex-shrink: 0;
+      transition: transform var(--t-base);
+      line-height: 1;
+    }
+    .faq-question[aria-expanded="true"] .faq-icon { transform: rotate(45deg); }
+
+    .faq-answer {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.4s var(--ease-in-out);
+    }
+    .faq-answer.open { max-height: 200px; }
+    .faq-answer p { padding-bottom: 24px; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .rate-grid  { grid-template-columns: 1fr !important; }
+      .day-grid   { grid-template-columns: 1fr !important; }
+      .incl-grid  { grid-template-columns: repeat(2, 1fr) !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">CRE<span>8</span> STUDIO</a>
+    <ul class="nav-links">
+      <li><a href="music.html">Music</a></li>
+      <li><a href="podcast.html">Podcast</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="nav-cta">Book Now</a></li>
+    </ul>
+    <div class="nav-hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <div class="nav-overlay">
+    <a href="music.html">Music</a>
+    <a href="podcast.html">Podcast</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="about.html">About</a>
+    <a href="contact.html" style="color:var(--orange)">Book Now</a>
+  </div>
+
+
+  <!-- ── 1. PAGE HERO ── -->
+  <section class="page-hero">
+    <span class="label-line page-hero-label">Podcast Production · Cannock Studio</span>
+    <h1 class="page-hero-title t-display-xl" style="max-width:700px; color:var(--cream)">
+      PODCAST<br>PACKAGES
+    </h1>
+    <p class="page-hero-sub t-body-lg" style="max-width:520px; margin-top:20px">
+      Professional podcast recording, multi-camera production &amp; expert editing — all in one place, walk out with a finished episode.
+    </p>
+    <div style="margin-top:32px; display:flex; gap:16px; flex-wrap:wrap">
+      <a href="contact.html" class="btn btn-primary">Book a Session →</a>
+      <a href="music.html" class="btn btn-ghost">View Music Packages</a>
+    </div>
+    <!-- Background decoration -->
+    <div aria-hidden="true" style="position:absolute; top:40px; right:60px; font-family:var(--font-display); font-size:220px; color:rgba(232,88,10,0.04); line-height:1; pointer-events:none; user-select:none">🎙</div>
+  </section>
+
+
+  <!-- ── 2. HOURLY RATES ── -->
+  <div class="rate-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:var(--panel-gap); margin-top:var(--panel-gap)" data-reveal-group>
+
+    <div class="rate-card" style="background:var(--surface); padding:52px 48px; position:relative; overflow:hidden" data-reveal-item>
+      <div style="position:absolute; top:0; left:0; right:0; height:3px; background:var(--orange)"></div>
+      <div aria-hidden="true" style="position:absolute; top:40px; right:40px; font-family:var(--font-display); font-size:160px; color:rgba(232,88,10,0.05); line-height:1; pointer-events:none">01</div>
+      <span class="t-label" style="display:block; margin-bottom:16px">Audio Only</span>
+      <div style="font-family:var(--font-display); font-size:96px; line-height:0.9; color:var(--orange); margin-bottom:8px">£45</div>
+      <div style="font-family:var(--font-ui); font-size:14px; color:var(--muted); letter-spacing:0.06em; margin-bottom:28px">per hour</div>
+      <p class="t-body" style="max-width:360px">Professional audio podcast recording. Crystal-clear sound captured on professional microphones in our treated recording environment.</p>
+      <a href="contact.html" class="btn btn-primary" style="margin-top:32px; font-size:11px">Book Hourly →</a>
+    </div>
+
+    <div class="rate-card" style="background:var(--surface-mid); padding:52px 48px; position:relative; overflow:hidden" data-reveal-item>
+      <div style="position:absolute; top:0; left:0; right:0; height:3px; background:var(--orange)"></div>
+      <div aria-hidden="true" style="position:absolute; top:40px; right:40px; font-family:var(--font-display); font-size:160px; color:rgba(232,88,10,0.05); line-height:1; pointer-events:none">02</div>
+      <span class="t-label" style="display:block; margin-bottom:16px">Audio + Video</span>
+      <div style="font-family:var(--font-display); font-size:96px; line-height:0.9; color:var(--orange); margin-bottom:8px">£75</div>
+      <div style="font-family:var(--font-ui); font-size:14px; color:var(--muted); letter-spacing:0.06em; margin-bottom:28px">per hour</div>
+      <p class="t-body" style="max-width:360px">Multi-camera video podcast recording with live switching. Walk out with a polished episode plus a library of social clips ready to post.</p>
+      <a href="contact.html" class="btn btn-primary" style="margin-top:32px; font-size:11px">Book Hourly →</a>
+    </div>
+
+  </div>
+
+
+  <!-- ── 3. EVERY PACKAGE INCLUDES ── -->
+  <div style="background:var(--off-black); padding:52px var(--space-xl); margin-top:var(--panel-gap)">
+    <span class="label-line" style="margin-bottom:36px">Every Package Includes</span>
+    <div class="incl-grid" style="display:grid; grid-template-columns:repeat(6,1fr); gap:var(--space-md)" data-reveal-group>
+
+      <div data-reveal-item>
+        <div style="font-family:var(--font-display); font-size:32px; color:var(--orange); margin-bottom:12px">⦿</div>
+        <div style="font-family:var(--font-ui); font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--cream); margin-bottom:6px">Studio &amp; Equipment</div>
+        <p style="font-size:12px; color:var(--muted); font-weight:300">Use of full setup</p>
+      </div>
+
+      <div data-reveal-item>
+        <div style="font-family:var(--font-display); font-size:32px; color:var(--orange); margin-bottom:12px">◈</div>
+        <div style="font-family:var(--font-ui); font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--cream); margin-bottom:6px">Pro Microphones</div>
+        <p style="font-size:12px; color:var(--muted); font-weight:300">Industry-standard mics</p>
+      </div>
+
+      <div data-reveal-item>
+        <div style="font-family:var(--font-display); font-size:32px; color:var(--orange); margin-bottom:12px">▣</div>
+        <div style="font-family:var(--font-ui); font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--cream); margin-bottom:6px">Multi-Camera</div>
+        <p style="font-size:12px; color:var(--muted); font-weight:300">Live switching included</p>
+      </div>
+
+      <div data-reveal-item>
+        <div style="font-family:var(--font-display); font-size:32px; color:var(--orange); margin-bottom:12px">⧫</div>
+        <div style="font-family:var(--font-ui); font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--cream); margin-bottom:6px">Editing &amp; Post</div>
+        <p style="font-size:12px; color:var(--muted); font-weight:300">Professional grade editing</p>
+      </div>
+
+      <div data-reveal-item>
+        <div style="font-family:var(--font-display); font-size:32px; color:var(--orange); margin-bottom:12px">◉</div>
+        <div style="font-family:var(--font-ui); font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--cream); margin-bottom:6px">Reels / Social Clips</div>
+        <p style="font-size:12px; color:var(--muted); font-weight:300">Ready to post</p>
+      </div>
+
+      <div data-reveal-item>
+        <div style="font-family:var(--font-display); font-size:32px; color:var(--orange); margin-bottom:12px">↓</div>
+        <div style="font-family:var(--font-ui); font-size:11px; font-weight:600; letter-spacing:0.14em; text-transform:uppercase; color:var(--cream); margin-bottom:6px">Full Episode Exports</div>
+        <p style="font-size:12px; color:var(--muted); font-weight:300">Your files to keep</p>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ── 4. HALF DAY + FULL DAY PACKAGES ── -->
+  <div class="day-grid" style="display:grid; grid-template-columns:1fr 1fr; gap:var(--panel-gap); margin-top:var(--panel-gap)" data-reveal-group>
+
+    <!-- Half Day -->
+    <div style="background:var(--surface); padding:52px 48px" data-reveal-item>
+      <span class="t-label" style="display:block; margin-bottom:16px">Half Day Session</span>
+      <h2 style="font-family:var(--font-display); font-size:72px; line-height:0.9; color:var(--cream); margin-bottom:6px">HALF DAY</h2>
+      <p style="font-family:var(--font-ui); font-size:13px; color:var(--muted); letter-spacing:0.06em; margin-bottom:28px">4 Hours</p>
+      <div style="margin-bottom:36px">
+        <span style="font-family:var(--font-ui); font-size:56px; font-weight:700; color:var(--cream)">£250</span>
+      </div>
+      <div class="divider"></div>
+      <ul class="pkg-features" style="margin-bottom:36px">
+        <li>Up to 4 hours studio time</li>
+        <li>Up to 3 hours completed footage</li>
+        <li>10–12 fully edited shorts for social media</li>
+        <li>Multi-camera production with live switching</li>
+        <li>Professional microphones</li>
+        <li>Use of studio &amp; all equipment</li>
+      </ul>
+      <a href="contact.html" class="btn btn-primary">Book Half Day →</a>
+    </div>
+
+    <!-- Full Day — featured -->
+    <div style="background:var(--surface-mid); padding:52px 48px; border-top:3px solid var(--orange); position:relative; overflow:hidden" data-reveal-item>
+      <div style="position:absolute; top:20px; right:32px; background:var(--orange); color:var(--black); font-family:var(--font-ui); font-size:10px; font-weight:700; letter-spacing:0.18em; text-transform:uppercase; padding:5px 14px; border-radius:2px">Best Value</div>
+      <span class="t-label" style="display:block; margin-bottom:16px">Full Day Session</span>
+      <h2 style="font-family:var(--font-display); font-size:72px; line-height:0.9; color:var(--cream); margin-bottom:6px">FULL DAY</h2>
+      <p style="font-family:var(--font-ui); font-size:13px; color:var(--muted); letter-spacing:0.06em; margin-bottom:28px">8 Hours</p>
+      <div style="margin-bottom:36px">
+        <span style="font-family:var(--font-ui); font-size:56px; font-weight:700; color:var(--cream)">£450</span>
+      </div>
+      <div class="divider"></div>
+      <ul class="pkg-features" style="margin-bottom:36px">
+        <li>Up to 8 hours studio time</li>
+        <li>Up to 6 hours completed footage</li>
+        <li>20–24 fully edited shorts for social media</li>
+        <li>Multi-camera production with live switching</li>
+        <li>Professional microphones</li>
+        <li>Full episode exports</li>
+        <li>Post production edits available after session</li>
+      </ul>
+      <a href="contact.html" class="btn btn-primary">Book Full Day →</a>
+    </div>
+
+  </div>
+
+
+  <!-- ── 5. FAQ ── -->
+  <section class="section" style="max-width:var(--content-width); margin:0 auto">
+    <h2 class="t-display-sm" style="color:var(--cream); margin-bottom:48px" data-reveal>Frequently Asked<br>Questions</h2>
+
+    <div class="faq-list" data-reveal-group>
+
+      <div class="faq-item" data-reveal-item>
+        <button class="faq-question" aria-expanded="false">
+          <span>Do I need to bring my own guests?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p class="t-body">Yes — bring whoever you're recording with. We provide all the equipment, seating, and microphone setups for multi-guest panels. Just let us know how many guests to expect when you book so we can set up accordingly.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" data-reveal-item>
+        <button class="faq-question" aria-expanded="false">
+          <span>What format will my episodes be delivered in?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p class="t-body">Audio is delivered as a mastered MP3 and WAV file — ready to upload to any podcast platform. Video is delivered as edited MP4 files, including the full episode and your social media clips, optimised for YouTube, Instagram, and TikTok.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" data-reveal-item>
+        <button class="faq-question" aria-expanded="false">
+          <span>How many social clips do I get?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p class="t-body">Half Day sessions include 10–12 fully edited social media clips. Full Day sessions include 20–24 clips. These are short-form cuts from your episode — trimmed, subtitled if needed, and formatted for Reels, TikTok, and YouTube Shorts.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" data-reveal-item>
+        <button class="faq-question" aria-expanded="false">
+          <span>Can I record multiple episodes in one day?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p class="t-body">Absolutely. A Full Day session gives you 8 hours of studio time — plenty to record two or three episodes back-to-back. It's one of the most efficient ways to build up content in a single visit. We can plan the schedule with you before the session.</p>
+        </div>
+      </div>
+
+      <div class="faq-item" data-reveal-item>
+        <button class="faq-question" aria-expanded="false">
+          <span>Do you handle the audio editing as well as video?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <p class="t-body">Yes — everything is handled in-house. Audio is professionally edited, levelled, and mastered. Video is edited with cuts, transitions, and your social clips formatted and ready to post. One person handles all of it, no hand-offs, no waiting around.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ── 6. BOOKING CTA BAND ── -->
+  <div style="background:var(--orange); padding:var(--space-2xl) var(--space-xl); display:flex; align-items:center; justify-content:space-between; gap:var(--space-xl); flex-wrap:wrap; margin-top:var(--panel-gap)">
+    <div>
+      <span style="font-family:var(--font-ui); font-size:10px; font-weight:700; letter-spacing:0.26em; text-transform:uppercase; color:rgba(0,0,0,0.4); display:block; margin-bottom:14px">Ready to Launch?</span>
+      <h2 style="font-family:var(--font-display); font-size:clamp(52px,6vw,84px); line-height:0.9; color:var(--black); margin-bottom:20px">LET'S MAKE<br>SOMETHING<br>WORTH HEARING.</h2>
+      <p style="font-size:14px; color:rgba(0,0,0,0.6); max-width:380px; margin-bottom:32px; font-weight:300">Ready to launch your podcast professionally? From solo episodes to multi-guest panels — get in touch and let's make something worth listening to.</p>
+      <div style="display:flex; gap:14px; flex-wrap:wrap; align-items:center">
+        <a href="contact.html" class="btn btn-dark">Book a Session →</a>
+        <a href="https://instagram.com/cre8_cannock" target="_blank" rel="noopener noreferrer" style="font-family:var(--font-ui); font-size:12px; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:rgba(0,0,0,0.55); text-decoration:none">@cre8_cannock</a>
+      </div>
+    </div>
+    <div aria-hidden="true" style="font-family:var(--font-display); font-size:clamp(80px,12vw,160px); color:rgba(0,0,0,0.08); line-height:1; user-select:none">£45</div>
+  </div>
+
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div>
+      <div class="footer-logo">CRE<span>8</span> STUDIO</div>
+      <div class="footer-location">Cannock · Staffordshire</div>
+    </div>
+    <div class="footer-info">
+      <div><a href="https://instagram.com/cre8_cannock" target="_blank" rel="noopener noreferrer">@cre8_cannock</a></div>
+      <div><a href="https://cre8-studio.net" target="_blank" rel="noopener noreferrer">cre8-studio.net</a></div>
+      <div>Cannock, Staffordshire</div>
+    </div>
+    <nav class="footer-nav">
+      <a href="music.html">Music Packages</a>
+      <a href="podcast.html">Podcast Packages</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="footer-cta">Book Now →</a>
+    </nav>
+    <div class="footer-bottom">
+      <p>© 2025 CRE8 Studio Cannock. All rights reserved.</p>
+      <p>Professional Recording · Cannock · Staffordshire</p>
+    </div>
+  </footer>
+
+
+  <!-- ── SCRIPTS ── -->
+  <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // FAQ accordion
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const isOpen = btn.getAttribute('aria-expanded') === 'true';
+        document.querySelectorAll('.faq-question').forEach(b => {
+          b.setAttribute('aria-expanded', 'false');
+          b.nextElementSibling.classList.remove('open');
+        });
+        if (!isOpen) {
+          btn.setAttribute('aria-expanded', 'true');
+          btn.nextElementSibling.classList.add('open');
+        }
+      });
+    });
+  });
+  </script>
+
+</body>
+</html>
