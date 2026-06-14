@@ -15,8 +15,8 @@
   --surface-mid:   #2A2A2A;
   --cream:         #F0EDE6;
   --warm-white:    #FAF8F4;
-  --muted:         #888888;
-  --muted-dim:     rgba(136, 136, 136, 0.4);
+  --muted:         #ABABAB;
+  --muted-dim:     rgba(171, 171, 171, 0.4);
   --border-dim:    rgba(255, 255, 255, 0.07);
   --border-mid:    rgba(255, 255, 255, 0.12);
 
@@ -506,7 +506,7 @@ ul {
   margin-top: var(--nav-height);
   display: grid;
   grid-template-columns: 1fr 1fr;
-  min-height: calc(100vh - var(--nav-height));
+  height: calc(100vh - var(--nav-height));
   gap: var(--panel-gap);
 }
 
@@ -518,15 +518,26 @@ ul {
   flex-direction: column;
   justify-content: flex-end;
   padding: 56px 52px;
+  min-height: 0;
+}
+
+.hero-bg-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
 }
 
 .hero-bg-glow {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse at 30% 65%, rgba(232,88,10,0.18) 0%, transparent 60%),
-    linear-gradient(160deg, var(--surface) 0%, var(--black) 100%);
+    radial-gradient(ellipse at 30% 65%, rgba(232,88,10,0.28) 0%, transparent 60%),
+    linear-gradient(160deg, rgba(20,20,22,0.55) 0%, rgba(0,0,0,0.85) 100%);
   pointer-events: none;
+  z-index: 1;
 }
 
 /* Animated EQ bars decoration */
@@ -534,6 +545,7 @@ ul {
   position: absolute;
   top: 56px;
   left: 52px;
+  z-index: 2;
   display: flex;
   align-items: flex-end;
   gap: 4px;
@@ -561,12 +573,13 @@ ul {
   to   { transform: scaleY(1);    }
 }
 
-.hero-label    { margin-bottom: 20px; position: relative; }
-.hero-headline { position: relative; margin-bottom: 24px; overflow: hidden; }
-.hero-sub      { position: relative; max-width: 340px; margin-bottom: 36px; }
+.hero-label    { margin-bottom: 20px; position: relative; z-index: 2; }
+.hero-headline { position: relative; margin-bottom: 24px; overflow: hidden; z-index: 2; font-size: clamp(64px, 9vw, 116px); }
+.hero-sub      { position: relative; max-width: 340px; margin-bottom: 36px; z-index: 2; }
 
 .hero-ctas {
   position: relative;
+  z-index: 2;
   display: flex;
   gap: 16px;
   align-items: center;
@@ -578,6 +591,7 @@ ul {
   display: grid;
   grid-template-rows: 1fr 1fr;
   gap: var(--panel-gap);
+  min-height: 0;
 }
 
 .hero-panel {
@@ -585,6 +599,7 @@ ul {
   overflow: hidden;
   display: block;
   cursor: pointer;
+  min-height: 0;
 }
 
 .hero-panel-bg {
@@ -597,14 +612,14 @@ ul {
 .panel-music .hero-panel-bg {
   background:
     radial-gradient(ellipse at 70% 30%, rgba(232,88,10,0.4) 0%, transparent 60%),
-    url('https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=900&q=80') center/cover no-repeat,
+    url('../img/Re_ Content Review/music - guitar and microphones.jpeg') center/cover no-repeat,
     linear-gradient(135deg, #1c1c1c 0%, #2a1500 100%);
 }
 
 .panel-podcast .hero-panel-bg {
   background:
     radial-gradient(ellipse at 30% 70%, rgba(232,88,10,0.25) 0%, transparent 60%),
-    url('https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=900&q=80') center/cover no-repeat,
+    url('../img/Re_ Content Review/Podcast area.jpeg') center/cover no-repeat,
     linear-gradient(225deg, #1e1e1e 0%, #0f0f0f 100%);
 }
 
@@ -703,17 +718,17 @@ ul {
 .fc-recording .feature-card-bg {
   background:
     radial-gradient(ellipse at 50% 30%, rgba(232,88,10,0.1) 0%, transparent 60%),
-    url('https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=800&q=80') center/cover no-repeat;
+    url('../img/Re_ Content Review/Music engineers desk.jpeg') center/cover no-repeat;
 }
 .fc-mix .feature-card-bg {
   background:
     radial-gradient(ellipse at 50% 50%, rgba(232,88,10,0.22) 0%, transparent 60%),
-    url('https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=800&q=80') center/cover no-repeat;
+    url('../img/Re_ Content Review/Music engineers desk 2.png') center/cover no-repeat;
 }
 .fc-video .feature-card-bg {
   background:
     radial-gradient(ellipse at 50% 40%, rgba(232,88,10,0.08) 0%, transparent 60%),
-    url('https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=800&q=80') center/cover no-repeat;
+    url('../img/Re_ Content Review/Podcast engineers desk.jpeg') center/cover no-repeat;
 }
 
 /* Dark overlay via pseudo-element on the bg div */
@@ -932,6 +947,10 @@ ul {
 
 
 /* ── 16. RESPONSIVE ── */
+@media (max-width: 1100px) {
+  .packages-row { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
 @media (max-width: 768px) {
   :root {
     --space-xl:  32px;
@@ -945,7 +964,7 @@ ul {
   .nav-overlay  { display: flex; }
 
   /* Hero */
-  .hero { grid-template-columns: 1fr; }
+  .hero { grid-template-columns: 1fr; height: auto; }
   .hero-left  { min-height: 80vh; padding: 40px 28px; }
   .hero-right { grid-template-rows: 260px 260px; }
 

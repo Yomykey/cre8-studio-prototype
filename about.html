@@ -21,6 +21,8 @@
     @media (max-width: 768px) {
       .about-intro-grid { grid-template-columns: 1fr !important; }
       .about-equip-grid { grid-template-columns: 1fr !important; }
+      .about-bio-grid   { grid-template-columns: 1fr !important; gap: var(--space-xl) !important; }
+      .about-stat-grid  { grid-template-columns: 1fr !important; gap: var(--space-lg) !important; }
     }
   </style>
 </head>
@@ -30,10 +32,10 @@
   <nav class="nav">
     <a href="index.html" class="nav-logo">CRE<span>8</span> STUDIO</a>
     <ul class="nav-links">
-      <li><a href="music.html">Music</a></li>
-      <li><a href="podcast.html">Podcast</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
       <li><a href="about.html">About</a></li>
+      <li><a href="podcast.html">Podcast</a></li>
+      <li><a href="music.html">Music</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
       <li><a href="contact.html" class="nav-cta">Book Now</a></li>
     </ul>
     <div class="nav-hamburger" aria-label="Open menu">
@@ -42,10 +44,10 @@
   </nav>
 
   <div class="nav-overlay">
-    <a href="music.html">Music</a>
-    <a href="podcast.html">Podcast</a>
-    <a href="gallery.html">Gallery</a>
     <a href="about.html">About</a>
+    <a href="podcast.html">Podcast</a>
+    <a href="music.html">Music</a>
+    <a href="gallery.html">Gallery</a>
     <a href="contact.html" style="color:var(--orange)">Book Now</a>
   </div>
 
@@ -94,6 +96,56 @@
   </section>
 
 
+  <!-- ── 2.5. MEET DAN ── -->
+  <section style="padding:var(--panel-gap) var(--space-xl); margin-top:var(--panel-gap)" data-reveal>
+    <span class="label-line" style="margin-bottom:28px; justify-content:center">Meet The Founder</span>
+    <h2 style="font-family:var(--font-display); font-size:clamp(48px,6vw,84px); line-height:0.92; color:var(--cream); text-align:center; max-width:800px; margin:0 auto 40px">DAN <span style="color:var(--orange)">RICHARDSON</span></h2>
+    <p class="t-body-lg" style="max-width:680px; margin:0 auto 56px; text-align:center">
+      CRE8 Studio is a professional recording, podcast and content creation studio based in Cannock, Staffordshire, and the creative home of producer &amp; musician Dan Richardson.
+    </p>
+
+    <!-- Stat row -->
+    <div class="about-stat-grid" style="display:grid; grid-template-columns:repeat(3,1fr); gap:var(--panel-gap); max-width:900px; margin:0 auto 64px" data-reveal-group>
+      <div style="text-align:center" data-reveal-item>
+        <div style="font-family:var(--font-display); font-size:64px; line-height:1; color:var(--orange); margin-bottom:8px">20+</div>
+        <div class="t-label-muted">Years In The Industry</div>
+      </div>
+      <div style="text-align:center" data-reveal-item>
+        <div style="font-family:var(--font-display); font-size:64px; line-height:1; color:var(--orange); margin-bottom:8px">1M+</div>
+        <div class="t-label-muted">Streams Across Platforms</div>
+      </div>
+      <div style="text-align:center" data-reveal-item>
+        <div style="font-family:var(--font-display); font-size:64px; line-height:1; color:var(--orange); margin-bottom:8px">BBC</div>
+        <div class="t-label-muted">Radio 1 &amp; Introducing Features</div>
+      </div>
+    </div>
+
+    <!-- Bio columns -->
+    <div class="about-bio-grid" style="display:grid; grid-template-columns:1fr 1fr; column-gap:var(--space-3xl); row-gap:var(--panel-gap); max-width:1100px; margin:0 auto" data-reveal-group>
+      <div data-reveal-item>
+        <span class="label-line" style="margin-bottom:20px">On Stage</span>
+        <p class="t-body">
+          With over 20 years of experience in the music industry, Dan has built his career both on stage and behind the scenes. Having performed across a wide range of genres, he has shared stages with major artists including Enter Shikari and Royal Blood, gaining invaluable experience in live performance, songwriting and audience engagement.
+        </p>
+      </div>
+      <div data-reveal-item>
+        <span class="label-line" style="margin-bottom:20px">In The Studio</span>
+        <p class="t-body">
+          Alongside his work as a musician, Dan has spent years developing his skills as a producer and engineer. His productions have amassed over 1 million streams across major platforms and have received multiple features on BBC Radio 1 &amp; BBC Introducing. He has also become a regular feature across several BBC Radio stations, discussing music, production and the creative process.
+        </p>
+      </div>
+    </div>
+
+    <blockquote class="t-serif-lg" style="color:var(--cream); text-align:center; max-width:760px; margin:64px auto" data-reveal>
+      "Today, Dan combines his passion for music, audio and content creation to help artists, businesses and creators bring their ideas to life — whether that's a podcast, a single, video content, or a project built from the ground up."
+    </blockquote>
+
+    <p class="t-body" style="max-width:680px; margin:0 auto; text-align:center" data-reveal>
+      The combination of two decades of live performance, studio production and experience across multiple genres has shaped Dan into a creative at heart — someone who understands not only how great content is made, but how to make it connect with an audience.
+    </p>
+  </section>
+
+
   <!-- ── 3. ETHOS STRIP ── -->
   <div style="background:var(--off-black); padding:80px var(--space-xl); text-align:center; margin-top:var(--panel-gap)" data-reveal>
     <span class="t-label-muted" style="display:block; margin-bottom:20px">The CRE8 Way</span>
@@ -110,7 +162,7 @@
     <div style="background:var(--surface); padding:44px 36px" data-reveal-item>
       <div style="font-family:var(--font-display); font-size:48px; color:var(--orange); line-height:1; margin-bottom:16px">⦿</div>
       <h3 style="font-family:var(--font-display); font-size:32px; color:var(--cream); margin-bottom:12px">RECORDING</h3>
-      <p class="t-body">High quality preamps, professional condenser microphones, and a treated acoustic environment for clean, detailed recording. No digital noise. No compromise.</p>
+      <p class="t-body">High quality equipment and a treated acoustic environment for clean, detailed recording. No digital noise. No compromise.</p>
     </div>
 
     <div style="background:var(--surface-mid); padding:44px 36px" data-reveal-item>
@@ -146,13 +198,14 @@
       <div class="footer-location">Cannock · Staffordshire</div>
     </div>
     <div class="footer-info">
-      <div><a href="https://instagram.com/cre8_cannock" target="_blank" rel="noopener noreferrer">@cre8_cannock</a></div>
+      <div><a href="tel:07472367935">Call Now: 07472 367935</a></div>
+      <div><a href="mailto:info@cre8-studio.net">info@cre8-studio.net</a></div>
       <div><a href="https://cre8-studio.net" target="_blank" rel="noopener noreferrer">cre8-studio.net</a></div>
       <div>Cannock, Staffordshire</div>
     </div>
     <nav class="footer-nav">
-      <a href="music.html">Music Packages</a>
       <a href="podcast.html">Podcast Packages</a>
+      <a href="music.html">Music Packages</a>
       <a href="gallery.html">Gallery</a>
       <a href="about.html">About</a>
       <a href="contact.html" class="footer-cta">Book Now →</a>
