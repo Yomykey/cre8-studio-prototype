@@ -626,14 +626,14 @@ ul {
 .panel-music .hero-panel-bg {
   background:
     radial-gradient(ellipse at 70% 30%, rgba(232,88,10,0.4) 0%, transparent 60%),
-    url('../img/Re_ Content Review/music - guitar and microphones.jpeg') center/cover no-repeat,
+    url('../img/Photos/music - guitar and microphones.jpeg') center/cover no-repeat,
     linear-gradient(135deg, #1c1c1c 0%, #2a1500 100%);
 }
 
 .panel-podcast .hero-panel-bg {
   background:
     radial-gradient(ellipse at 30% 70%, rgba(232,88,10,0.25) 0%, transparent 60%),
-    url('../img/Re_ Content Review/Podcast area.jpeg') center/cover no-repeat,
+    url('../img/Photos/Podcast area.jpeg') center/cover no-repeat,
     linear-gradient(225deg, #1e1e1e 0%, #0f0f0f 100%);
 }
 
@@ -732,17 +732,17 @@ ul {
 .fc-recording .feature-card-bg {
   background:
     radial-gradient(ellipse at 50% 30%, rgba(232,88,10,0.1) 0%, transparent 60%),
-    url('../img/Re_ Content Review/Music engineers desk.jpeg') center/cover no-repeat;
+    url('../img/Photos/Music engineers desk.jpeg') center/cover no-repeat;
 }
 .fc-mix .feature-card-bg {
   background:
     radial-gradient(ellipse at 50% 50%, rgba(232,88,10,0.22) 0%, transparent 60%),
-    url('../img/Re_ Content Review/Music engineers desk 2.png') center/cover no-repeat;
+    url('../img/Photos/Music engineers desk 2.png') center/cover no-repeat;
 }
 .fc-video .feature-card-bg {
   background:
     radial-gradient(ellipse at 50% 40%, rgba(232,88,10,0.08) 0%, transparent 60%),
-    url('../img/Re_ Content Review/Podcast engineers desk.jpeg') center/cover no-repeat;
+    url('../img/Photos/Podcast engineers desk.jpeg') center/cover no-repeat;
 }
 
 /* Dark overlay via pseudo-element on the bg div */
