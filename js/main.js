@@ -27,13 +27,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const heroVideo = document.querySelector('.hero-bg-video');
   if (heroVideo) {
     heroVideo.muted = true;
-    const playPromise = heroVideo.play();
-    if (playPromise !== undefined) {
-      playPromise.catch(() => {
-        // Autoplay blocked — hide video, poster image shows as fallback
-        heroVideo.style.display = 'none';
-      });
-    }
+    // Wait 800ms — if the video hasn't started by then, autoplay was blocked.
+    // Hide the element so the poster image shows cleanly with no play button.
+    setTimeout(() => {
+      if (heroVideo.paused) {
+        heroVideo.style.visibility = 'hidden';
+        const hero = heroVideo.closest('section');
+        if (hero) {
+          hero.style.backgroundImage = 'url("img/Hero/hero-bg-poster.jpg")';
+          hero.style.backgroundSize = 'cover';
+          hero.style.backgroundPosition = 'center';
+        }
+      }
+    }, 800);
   }
 
   // ── NAV SCROLL STATE ──
