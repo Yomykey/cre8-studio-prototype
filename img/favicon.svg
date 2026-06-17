@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Orange background with slightly rounded corners -->
+  <rect width="32" height="32" rx="4" fill="#E8580A"/>
+  <!-- "8" centred — drawn as a path so no font dependency -->
+  <!--
+    Bebas Neue "8" traced at 32px grid:
+    Two rounded rectangles stacked, sharing a middle bar
+  -->
+  <text
+    x="16"
+    y="27"
+    font-family="Impact, 'Arial Narrow', sans-serif"
+    font-size="28"
+    font-weight="900"
+    text-anchor="middle"
+    fill="#F0EDE6"
+    letter-spacing="-1"
+  >8</text>
+</svg>

@@ -336,8 +336,17 @@ ul {
   font-size: 26px;
   letter-spacing: 0.12em;
   color: var(--cream);
+  display: flex;
+  align-items: center;
 }
 .nav-logo span { color: var(--orange); }
+.nav-logo img {
+  width: 150px;
+  height: 64px;
+  display: block;
+  object-fit: cover;
+  object-position: center center;
+}
 
 .nav-links {
   display: flex;
@@ -442,6 +451,11 @@ ul {
   margin-bottom: var(--space-xs);
 }
 .footer-logo span { color: var(--orange); }
+.footer-logo img {
+  height: 48px;
+  width: auto;
+  display: block;
+}
 
 .footer-location {
   font-family: var(--font-ui);

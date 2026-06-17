@@ -3,7 +3,92 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
   <title>CRE8 Studio — About | Cannock</title>
+
+  <meta name="description" content="20+ years of professional recording, mixing &amp; mastering experience. Podcast, music and content production from £45/hr.">
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="About CRE8 Studio — Cannock, Staffordshire">
+  <meta property="og:description" content="20+ years of professional recording, mixing & mastering experience. Podcast, music and content production from £45/hr.">
+  <meta property="og:image" content="img/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About CRE8 Studio — Cannock, Staffordshire">
+  <meta name="twitter:description" content="20+ years of professional recording, mixing & mastering experience. Podcast, music and content production from £45/hr.">
+  <meta name="twitter:image" content="img/og-image.png">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "CRE8 Studio",
+    "description": "Professional recording studio in Cannock, Staffordshire. Music recording, podcast production and content creation from £45/hr.",
+    "url": "https://cre8-studio.net",
+    "telephone": "+447472367935",
+    "email": "info@cre8-studio.net",
+    "image": "https://cre8-studio.net/img/og-image.png",
+    "logo": "https://cre8-studio.net/img/logo/cre8-logo.png",
+    "priceRange": "££",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Cannock Road",
+      "addressLocality": "Cannock",
+      "addressRegion": "Staffordshire",
+      "postalCode": "WS11 5DD",
+      "addressCountry": "GB"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 52.69,
+      "longitude": -2.03
+    },
+    "sameAs": ["https://instagram.com/cre8_cannock"],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Studio Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Music Recording & Production",
+            "description": "Professional music recording, mixing and mastering for solo artists and bands"
+          },
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "45",
+            "priceCurrency": "GBP",
+            "unitText": "per hour"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Podcast Production",
+            "description": "Audio and video podcast recording, multi-cam setup and editing"
+          },
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "45",
+            "priceCurrency": "GBP",
+            "unitText": "per hour"
+          }
+        }
+      ]
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Dan Richardson",
+      "jobTitle": "Producer & Studio Engineer"
+    }
+  }
+  </script>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +100,7 @@
   <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting-cells.css">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=2">
 
   <style>
     @media (max-width: 768px) {
@@ -30,7 +115,7 @@
 
   <!-- ── NAV ── -->
   <nav class="nav">
-    <a href="index.html" class="nav-logo">CRE<span>8</span> STUDIO</a>
+    <a href="index.html" class="nav-logo"><img src="img/logo/cre8-logo.png" alt="CRE8 Studio Cannock"></a>
     <ul class="nav-links">
       <li><a href="about.html">About</a></li>
       <li><a href="podcast.html">Podcast</a></li>
@@ -194,7 +279,7 @@
   <!-- ── FOOTER ── -->
   <footer class="footer">
     <div>
-      <div class="footer-logo">CRE<span>8</span> STUDIO</div>
+      <div class="footer-logo"><img src="img/logo/cre8-logo.png" alt="CRE8 Studio Cannock"></div>
       <div class="footer-location">Cannock · Staffordshire</div>
     </div>
     <div class="footer-info">

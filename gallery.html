@@ -3,7 +3,92 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
   <title>CRE8 Studio — Gallery | Cannock</title>
+
+  <meta name="description" content="Take a look inside CRE8 Studio — professional recording, podcast and content production in Cannock, Staffordshire.">
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Gallery — CRE8 Studio Cannock">
+  <meta property="og:description" content="Take a look inside CRE8 Studio — professional recording, podcast and content production in Cannock, Staffordshire.">
+  <meta property="og:image" content="img/og-image.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Gallery — CRE8 Studio Cannock">
+  <meta name="twitter:description" content="Take a look inside CRE8 Studio — professional recording, podcast and content production in Cannock, Staffordshire.">
+  <meta name="twitter:image" content="img/og-image.png">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "CRE8 Studio",
+    "description": "Professional recording studio in Cannock, Staffordshire. Music recording, podcast production and content creation from £45/hr.",
+    "url": "https://cre8-studio.net",
+    "telephone": "+447472367935",
+    "email": "info@cre8-studio.net",
+    "image": "https://cre8-studio.net/img/og-image.png",
+    "logo": "https://cre8-studio.net/img/logo/cre8-logo.png",
+    "priceRange": "££",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Cannock Road",
+      "addressLocality": "Cannock",
+      "addressRegion": "Staffordshire",
+      "postalCode": "WS11 5DD",
+      "addressCountry": "GB"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 52.69,
+      "longitude": -2.03
+    },
+    "sameAs": ["https://instagram.com/cre8_cannock"],
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Studio Services",
+      "itemListElement": [
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Music Recording & Production",
+            "description": "Professional music recording, mixing and mastering for solo artists and bands"
+          },
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "45",
+            "priceCurrency": "GBP",
+            "unitText": "per hour"
+          }
+        },
+        {
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": "Podcast Production",
+            "description": "Audio and video podcast recording, multi-cam setup and editing"
+          },
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "45",
+            "priceCurrency": "GBP",
+            "unitText": "per hour"
+          }
+        }
+      ]
+    },
+    "founder": {
+      "@type": "Person",
+      "name": "Dan Richardson",
+      "jobTitle": "Producer & Studio Engineer"
+    }
+  }
+  </script>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,7 +100,7 @@
   <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting-cells.css">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=2">
 
   <style>
     /* ── GALLERY ── */
@@ -49,7 +134,7 @@
 
   <!-- ── NAV ── -->
   <nav class="nav">
-    <a href="index.html" class="nav-logo">CRE<span>8</span> STUDIO</a>
+    <a href="index.html" class="nav-logo"><img src="img/logo/cre8-logo.png" alt="CRE8 Studio Cannock"></a>
     <ul class="nav-links">
       <li><a href="about.html">About</a></li>
       <li><a href="podcast.html">Podcast</a></li>
@@ -86,43 +171,43 @@
 
     <!-- Spans 2 cols -->
     <div style="grid-column:span 2; overflow:hidden; position:relative; cursor:pointer" class="gallery-item" data-reveal-item>
-      <img src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=1200&q=80" alt="Recording studio setup — mixing desk and equipment" style="width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease" loading="lazy">
+      <img src="img/gallery/studio-setup.jpg" alt="Recording studio setup — mixing desk and equipment" style="width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease" loading="lazy">
       <div class="gallery-overlay"><span class="t-label">Studio Setup</span></div>
     </div>
 
     <div style="overflow:hidden; position:relative; cursor:pointer" class="gallery-item" data-reveal-item>
-      <img src="https://images.unsplash.com/photo-1520523839897-bd0b52f945a0?w=800&q=80" alt="Professional condenser microphone in recording booth" style="width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease" loading="lazy">
+      <img src="img/gallery/recording-booth.jpg" alt="Professional condenser microphone in recording booth" style="width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease" loading="lazy">
       <div class="gallery-overlay"><span class="t-label">Recording</span></div>
     </div>
 
     <div style="overflow:hidden; position:relative; cursor:pointer" class="gallery-item" data-reveal-item>
-      <img src="https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=800&q=80" alt="Podcast recording session with microphone" style="width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease" loading="lazy">
+      <img src="img/gallery/podcast-session.jpg" alt="Podcast recording session seating area" style="width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease" loading="lazy">
       <div class="gallery-overlay"><span class="t-label">Podcast Session</span></div>
     </div>
 
     <div style="overflow:hidden; position:relative; cursor:pointer" class="gallery-item" data-reveal-item>
-      <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=800&q=80" alt="Music production and performance in studio" style="width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease" loading="lazy">
+      <img src="img/gallery/music-production.jpg" alt="Drum kit and production rack in studio" style="width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease" loading="lazy">
       <div class="gallery-overlay"><span class="t-label">Music Production</span></div>
     </div>
 
     <!-- Spans 2 cols -->
     <div style="grid-column:span 2; overflow:hidden; position:relative; cursor:pointer" class="gallery-item" data-reveal-item>
-      <img src="https://images.unsplash.com/photo-1571330735066-03aaa9429d89?w=1200&q=80" alt="Full band recording session in studio" style="width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease" loading="lazy">
+      <img src="img/gallery/band-session.jpg" alt="Full band recording session in studio" style="width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease" loading="lazy">
       <div class="gallery-overlay"><span class="t-label">Band Session</span></div>
     </div>
 
     <div style="overflow:hidden; position:relative; cursor:pointer" class="gallery-item" data-reveal-item>
-      <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?w=800&q=80" alt="Electric guitar in studio environment" style="width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease" loading="lazy">
+      <img src="img/gallery/guitar-session.jpg" alt="Electric guitars and amps in studio environment" style="width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease" loading="lazy">
       <div class="gallery-overlay"><span class="t-label">Guitar Session</span></div>
     </div>
 
     <div style="overflow:hidden; position:relative; cursor:pointer" class="gallery-item" data-reveal-item>
-      <img src="https://images.unsplash.com/photo-1619983081563-430f63602796?w=800&q=80" alt="Professional mixing console and monitors" style="width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease" loading="lazy">
+      <img src="img/gallery/mixing-mastering.jpg" alt="Professional mixing desk and studio monitors" style="width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease" loading="lazy">
       <div class="gallery-overlay"><span class="t-label">Mixing &amp; Mastering</span></div>
     </div>
 
     <div style="overflow:hidden; position:relative; cursor:pointer" class="gallery-item" data-reveal-item>
-      <img src="https://images.unsplash.com/photo-1478737270239-2f02b77fc618?w=800&q=80" alt="Studio headphones and recording environment" style="width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease" loading="lazy">
+      <img src="img/gallery/in-session.jpg" alt="Behind the scenes of a podcast recording session" style="width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease" loading="lazy">
       <div class="gallery-overlay"><span class="t-label">In Session</span></div>
     </div>
 
@@ -136,14 +221,6 @@
     <p class="t-body" style="max-width:480px; margin:0 auto 32px">Follow us on Instagram for session footage, behind-the-scenes content, client work, and studio updates.</p>
     <a href="https://instagram.com/cre8_cannock" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Follow on Instagram →</a>
 
-    <!-- Instagram feed placeholder (client connects real embed) -->
-    <div class="insta-grid" style="display:grid; grid-template-columns:repeat(4,1fr); gap:var(--panel-gap); margin-top:48px; opacity:0.5">
-      <div style="aspect-ratio:1; background:var(--surface-mid)"></div>
-      <div style="aspect-ratio:1; background:var(--surface-mid)"></div>
-      <div style="aspect-ratio:1; background:var(--surface-mid)"></div>
-      <div style="aspect-ratio:1; background:var(--surface-mid)"></div>
-    </div>
-    <p style="font-size:11px; color:var(--muted); margin-top:14px; font-family:var(--font-ui); letter-spacing:0.1em; text-transform:uppercase; opacity:0.5">Instagram feed — connect @cre8_cannock to activate</p>
   </div>
 
 
@@ -162,7 +239,7 @@
   <!-- ── FOOTER ── -->
   <footer class="footer">
     <div>
-      <div class="footer-logo">CRE<span>8</span> STUDIO</div>
+      <div class="footer-logo"><img src="img/logo/cre8-logo.png" alt="CRE8 Studio Cannock"></div>
       <div class="footer-location">Cannock · Staffordshire</div>
     </div>
     <div class="footer-info">
