@@ -23,23 +23,22 @@ document.addEventListener('DOMContentLoaded', () => {
   gsap.ticker.add((time) => { lenis.raf(time * 1000); });
   gsap.ticker.lagSmoothing(0);
 
-  // ── HERO VIDEO AUTOPLAY (mobile fallback) ──
+  // ── HERO VIDEO AUTOPLAY ──
+  // Mobile browsers (especially iOS) block autoplay until a user gesture.
+  // We try immediately, then retry on the first touch — which fires as soon
+  // as the user scrolls or taps, so the video starts within a fraction of a second.
   const heroVideo = document.querySelector('.hero-bg-video');
   if (heroVideo) {
     heroVideo.muted = true;
-    // Wait 800ms — if the video hasn't started by then, autoplay was blocked.
-    // Hide the element so the poster image shows cleanly with no play button.
-    setTimeout(() => {
-      if (heroVideo.paused) {
-        heroVideo.style.visibility = 'hidden';
-        const hero = heroVideo.closest('section');
-        if (hero) {
-          hero.style.backgroundImage = 'url("img/Hero/hero-bg-poster.jpg")';
-          hero.style.backgroundSize = 'cover';
-          hero.style.backgroundPosition = 'center';
-        }
-      }
-    }, 800);
+    heroVideo.play().catch(() => {
+      const retryPlay = () => {
+        heroVideo.play().catch(() => {});
+        document.removeEventListener('touchstart', retryPlay);
+        document.removeEventListener('touchend', retryPlay);
+      };
+      document.addEventListener('touchstart', retryPlay, { passive: true });
+      document.addEventListener('touchend', retryPlay, { passive: true });
+    });
   }
 
   // ── NAV SCROLL STATE ──
