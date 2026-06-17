@@ -23,6 +23,19 @@ document.addEventListener('DOMContentLoaded', () => {
   gsap.ticker.add((time) => { lenis.raf(time * 1000); });
   gsap.ticker.lagSmoothing(0);
 
+  // ── HERO VIDEO AUTOPLAY (mobile fallback) ──
+  const heroVideo = document.querySelector('.hero-bg-video');
+  if (heroVideo) {
+    heroVideo.muted = true;
+    const playPromise = heroVideo.play();
+    if (playPromise !== undefined) {
+      playPromise.catch(() => {
+        // Autoplay blocked — hide video, poster image shows as fallback
+        heroVideo.style.display = 'none';
+      });
+    }
+  }
+
   // ── NAV SCROLL STATE ──
   const nav = document.querySelector('.nav');
   if (nav) {
