@@ -30,21 +30,31 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ── HERO VIDEO AUTOPLAY ──
-  // Mobile browsers (especially iOS) block autoplay until a user gesture.
-  // We try immediately, then retry on the first touch — which fires as soon
-  // as the user scrolls or taps, so the video starts within a fraction of a second.
+  // iOS Safari requires muted + playsinline + a ready video before play() works.
+  // Calling play() before canplay fires (i.e. on DOMContentLoaded on a slow
+  // mobile connection) silently fails. We call load() to force the browser to
+  // start fetching, then play once the video is ready. A touch fallback covers
+  // browsers that still need a gesture.
   const heroVideo = document.querySelector('.hero-bg-video');
   if (heroVideo) {
     heroVideo.muted = true;
-    heroVideo.play().catch(() => {
-      const retryPlay = () => {
-        heroVideo.play().catch(() => {});
-        document.removeEventListener('touchstart', retryPlay);
-        document.removeEventListener('touchend', retryPlay);
-      };
-      document.addEventListener('touchstart', retryPlay, { passive: true });
-      document.addEventListener('touchend', retryPlay, { passive: true });
-    });
+    heroVideo.playsInline = true;
+
+    const tryPlay = () => {
+      const p = heroVideo.play();
+      if (p) p.catch(() => {});
+    };
+
+    if (heroVideo.readyState >= 3) {
+      tryPlay();
+    } else {
+      heroVideo.addEventListener('canplay', tryPlay, { once: true });
+    }
+
+    heroVideo.load();
+
+    // Fallback for browsers that require a user gesture
+    document.addEventListener('touchstart', tryPlay, { once: true, passive: true });
   }
 
   // ── NAV SCROLL STATE ──
