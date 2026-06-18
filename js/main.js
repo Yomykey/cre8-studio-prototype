@@ -6,22 +6,28 @@ document.addEventListener('DOMContentLoaded', () => {
   // ── GSAP PLUGIN REGISTRATION ──
   gsap.registerPlugin(ScrollTrigger);
 
-  // ── LENIS SMOOTH SCROLL ──
-  const lenis = new Lenis({
-    duration: 1.1,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    smooth: true,
-  });
+  // ── LENIS SMOOTH SCROLL (desktop only) ──
+  // Lenis intercepts touch events with passive:false on mobile which
+  // causes iOS Safari to block video autoplay. Native scroll is fine on mobile.
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
-  function raf(time) {
-    lenis.raf(time);
+  if (!isMobile) {
+    const lenis = new Lenis({
+      duration: 1.1,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smooth: true,
+    });
+
+    function raf(time) {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    }
     requestAnimationFrame(raf);
-  }
-  requestAnimationFrame(raf);
 
-  lenis.on('scroll', ScrollTrigger.update);
-  gsap.ticker.add((time) => { lenis.raf(time * 1000); });
-  gsap.ticker.lagSmoothing(0);
+    lenis.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+    gsap.ticker.lagSmoothing(0);
+  }
 
   // ── HERO VIDEO AUTOPLAY ──
   // Mobile browsers (especially iOS) block autoplay until a user gesture.
