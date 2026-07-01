@@ -28,11 +28,11 @@
   <rect x="40" y="96" width="192" height="16" rx="8" fill="#1A1A1A"/>
   <text x="136" y="108" font-family="'Barlow Condensed','Arial Narrow',sans-serif" font-size="10" fill="#888888" text-anchor="middle" letter-spacing="2.5">CANNOCK · STAFFORDSHIRE</text>
   <rect x="40" y="122" width="52" height="2" fill="#E8580A"/>
-  <text x="40" y="182" font-family="'Bebas Neue','Arial Narrow',Impact,sans-serif" font-size="60" fill="#F0EDE6" letter-spacing="2">PODCAST.</text>
-  <text x="40" y="248" font-family="'Bebas Neue','Arial Narrow',Impact,sans-serif" font-size="60" fill="#F0EDE6" letter-spacing="2">MUSIC.</text>
-  <text x="40" y="314" font-family="'Bebas Neue','Arial Narrow',Impact,sans-serif" font-size="60" fill="#E8580A" letter-spacing="2">CONTENT.</text>
+  <text x="40" y="182" font-family="'Bebas Neue','Arial Narrow',Impact,sans-serif" font-size="60" fill="#F0EDE6" stroke="#F0EDE6" stroke-width="0.8" paint-order="stroke fill" letter-spacing="2">PODCAST.</text>
+  <text x="40" y="248" font-family="'Bebas Neue','Arial Narrow',Impact,sans-serif" font-size="60" fill="#F0EDE6" stroke="#F0EDE6" stroke-width="0.8" paint-order="stroke fill" letter-spacing="2">MUSIC.</text>
+  <text x="40" y="314" font-family="'Bebas Neue','Arial Narrow',Impact,sans-serif" font-size="60" fill="#E8580A" stroke="#E8580A" stroke-width="0.8" paint-order="stroke fill" letter-spacing="2">CONTENT.</text>
   <text x="40" y="336" font-family="'Barlow','Arial',sans-serif" font-size="12" fill="#666666" letter-spacing="0.4">Professional recording · Mixing &amp; mastering · From £45/hr</text>
   <rect x="460" y="234" width="164" height="56" rx="4" fill="#0A0A0A" opacity="0.55"/>
-  <text x="542" y="268" font-family="'Bebas Neue','Arial Narrow',Impact,sans-serif" font-size="36" fill="#E8580A" text-anchor="middle">20+</text>
+  <text x="542" y="268" font-family="'Bebas Neue','Arial Narrow',Impact,sans-serif" font-size="36" fill="#E8580A" stroke="#E8580A" stroke-width="0.6" paint-order="stroke fill" text-anchor="middle">20+</text>
   <text x="542" y="282" font-family="'Barlow Condensed','Arial Narrow',sans-serif" font-size="11" fill="#888888" text-anchor="middle" letter-spacing="2">YEARS EXPERIENCE</text>
 </svg>
