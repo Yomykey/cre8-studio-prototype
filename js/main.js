@@ -49,9 +49,8 @@ document.addEventListener('DOMContentLoaded', () => {
       tryPlay();
     } else {
       heroVideo.addEventListener('canplay', tryPlay, { once: true });
+      heroVideo.load();
     }
-
-    heroVideo.load();
 
     // Fallback for browsers that require a user gesture
     document.addEventListener('touchstart', tryPlay, { once: true, passive: true });
