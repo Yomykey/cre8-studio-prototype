@@ -588,7 +588,7 @@ ul {
 }
 
 .hero-label    { margin-bottom: 20px; position: relative; z-index: 2; }
-.hero-headline { position: relative; margin-bottom: 24px; overflow: hidden; z-index: 2; font-size: clamp(64px, 9vw, 116px); }
+.hero-headline { position: relative; margin-bottom: 24px; overflow: visible; z-index: 2; font-size: clamp(64px, 9vw, 116px); }
 .hero-sub      { position: relative; max-width: 340px; margin-bottom: 36px; z-index: 2; }
 
 .hero-ctas {
