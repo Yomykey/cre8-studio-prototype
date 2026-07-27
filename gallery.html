@@ -118,6 +118,53 @@
     }
     .gallery-item:hover .gallery-overlay { opacity: 1; }
 
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 40px;
+      z-index: 1000;
+      cursor: zoom-out;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox-img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+      cursor: default;
+    }
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 32px;
+      font-size: 40px;
+      line-height: 1;
+      color: var(--cream, #fff);
+      cursor: pointer;
+      opacity: 0.8;
+      transition: opacity 0.2s;
+    }
+    .lightbox-close:hover { opacity: 1; }
+    .lightbox-caption {
+      position: absolute;
+      bottom: 28px;
+      left: 0;
+      right: 0;
+      text-align: center;
+      color: var(--cream, #fff);
+      font-family: var(--font-ui);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      opacity: 0.7;
+    }
+
     @media (max-width: 768px) {
       .gallery-grid {
         grid-template-columns: 1fr 1fr !important;
@@ -185,11 +232,6 @@
       <div class="gallery-overlay"><span class="t-label">Podcast Session</span></div>
     </div>
 
-    <div style="overflow:hidden; position:relative; cursor:pointer" class="gallery-item" data-reveal-item>
-      <img src="img/gallery/music-production.jpg" alt="Drum kit and production rack in studio" style="width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease" loading="lazy">
-      <div class="gallery-overlay"><span class="t-label">Music Production</span></div>
-    </div>
-
     <!-- Spans 2 cols -->
     <div style="grid-column:span 2; overflow:hidden; position:relative; cursor:pointer" class="gallery-item" data-reveal-item>
       <img src="img/gallery/band-session.jpg" alt="Full band recording session in studio" style="width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease" loading="lazy">
@@ -209,6 +251,59 @@
     <div style="overflow:hidden; position:relative; cursor:pointer" class="gallery-item" data-reveal-item>
       <img src="img/gallery/in-session.jpg" alt="Behind the scenes of a podcast recording session" style="width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease" loading="lazy">
       <div class="gallery-overlay"><span class="t-label">In Session</span></div>
+    </div>
+
+    <!-- Spans 2 cols -->
+    <div style="grid-column:span 2; overflow:hidden; position:relative; cursor:pointer" class="gallery-item" data-reveal-item>
+      <img src="img/gallery/band-room-setup.jpg" alt="Live room with drum kit, amps and guitars set up ready for a session" style="width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease" loading="lazy">
+      <div class="gallery-overlay"><span class="t-label">Band Room</span></div>
+    </div>
+
+    <!-- Spans 2 cols -->
+    <div style="grid-column:span 2; overflow:hidden; position:relative; cursor:pointer" class="gallery-item" data-reveal-item>
+      <img src="img/gallery/live-band-session.jpg" alt="Four-piece band recording live in the studio" style="width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease" loading="lazy">
+      <div class="gallery-overlay"><span class="t-label">Live Session</span></div>
+    </div>
+
+    <div style="overflow:hidden; position:relative; cursor:pointer" class="gallery-item" data-reveal-item>
+      <img src="img/gallery/full-band-session.jpg" alt="Full band performing together in the studio" style="width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease" loading="lazy">
+      <div class="gallery-overlay"><span class="t-label">Full Band</span></div>
+    </div>
+
+    <div style="overflow:hidden; position:relative; cursor:pointer" class="gallery-item" data-reveal-item>
+      <img src="img/gallery/band-filming-bts.jpg" alt="Behind the scenes filming a live band session" style="width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease" loading="lazy">
+      <div class="gallery-overlay"><span class="t-label">Behind The Scenes</span></div>
+    </div>
+
+    <div style="overflow:hidden; position:relative; cursor:pointer" class="gallery-item" data-reveal-item>
+      <img src="img/gallery/keyboard-session.jpg" alt="Artist recording keys on stage piano while being filmed" style="width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease" loading="lazy">
+      <div class="gallery-overlay"><span class="t-label">Keys Session</span></div>
+    </div>
+
+    <!-- Spans 2 cols -->
+    <div style="grid-column:span 2; overflow:hidden; position:relative; cursor:pointer" class="gallery-item" data-reveal-item>
+      <img src="img/gallery/podcast-set.jpg" alt="Podcast set with sofa, armchairs and on-air sign" style="width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease" loading="lazy">
+      <div class="gallery-overlay"><span class="t-label">Podcast Set</span></div>
+    </div>
+
+    <div style="overflow:hidden; position:relative; cursor:pointer" class="gallery-item" data-reveal-item>
+      <img src="img/gallery/podcast-guests.jpg" alt="Podcast guests in conversation on the studio set" style="width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease" loading="lazy">
+      <div class="gallery-overlay"><span class="t-label">Podcast Guests</span></div>
+    </div>
+
+    <div style="overflow:hidden; position:relative; cursor:pointer" class="gallery-item" data-reveal-item>
+      <img src="img/gallery/podcast-guest-mic.jpg" alt="Podcast guest speaking into a microphone" style="width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease" loading="lazy">
+      <div class="gallery-overlay"><span class="t-label">In Conversation</span></div>
+    </div>
+
+    <div style="overflow:hidden; position:relative; cursor:pointer" class="gallery-item" data-reveal-item>
+      <img src="img/gallery/podcast-guest-interview.jpg" alt="Podcast guest being interviewed in the studio" style="width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease" loading="lazy">
+      <div class="gallery-overlay"><span class="t-label">On The Mic</span></div>
+    </div>
+
+    <div style="overflow:hidden; position:relative; cursor:pointer" class="gallery-item" data-reveal-item>
+      <img src="img/gallery/podcast-post-production.jpg" alt="Editing a podcast episode in post-production" style="width:100%; height:100%; object-fit:cover; transition:transform 0.6s ease" loading="lazy">
+      <div class="gallery-overlay"><span class="t-label">Post-Production</span></div>
     </div>
 
   </div>
@@ -262,12 +357,58 @@
   </footer>
 
 
+  <!-- ── LIGHTBOX ── -->
+  <div class="lightbox" id="lightbox">
+    <span class="lightbox-close" id="lightbox-close">&times;</span>
+    <img class="lightbox-img" id="lightbox-img" src="" alt="">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+  </div>
+
+
   <!-- ── SCRIPTS ── -->
   <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="js/main.js"></script>
+
+  <script>
+    (function () {
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightbox-img');
+      const lightboxCaption = document.getElementById('lightbox-caption');
+      const closeBtn = document.getElementById('lightbox-close');
+
+      function openLightbox(img) {
+        lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt;
+        lightboxCaption.textContent = img.alt || '';
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeLightbox() {
+        lightbox.classList.remove('active');
+        lightboxImg.src = '';
+        document.body.style.overflow = '';
+      }
+
+      document.querySelectorAll('.gallery-item').forEach(item => {
+        item.addEventListener('click', () => {
+          const img = item.querySelector('img');
+          if (img) openLightbox(img);
+        });
+      });
+
+      closeBtn.addEventListener('click', closeLightbox);
+      lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox) closeLightbox();
+      });
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox();
+      });
+    })();
+  </script>
 
 </body>
 </html>

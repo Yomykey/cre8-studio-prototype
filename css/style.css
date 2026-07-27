@@ -626,7 +626,7 @@ ul {
 .panel-music .hero-panel-bg {
   background:
     radial-gradient(ellipse at 70% 30%, rgba(232,88,10,0.4) 0%, transparent 60%),
-    url('../img/Photos/music - guitar and microphones.jpeg') center/cover no-repeat,
+    url('../img/gallery/band-room-setup.jpg') center/cover no-repeat,
     linear-gradient(135deg, #1c1c1c 0%, #2a1500 100%);
 }
 
