@@ -9,16 +9,16 @@
   <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
   <title>CRE8 Studio — Book a Session | Cannock</title>
 
-  <meta name="description" content="Book your recording session at CRE8 Studio. Podcast, music and content production from £45/hr in Cannock, Staffordshire.">
+  <meta name="description" content="Book your recording session at CRE8 Studio. Podcast, music and content production at a flat £40/hr in Cannock, Staffordshire.">
 
   <!-- OpenGraph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="Book a Session — CRE8 Studio Cannock">
-  <meta property="og:description" content="Book your recording session at CRE8 Studio. Podcast, music and content production from £45/hr in Cannock, Staffordshire.">
+  <meta property="og:description" content="Book your recording session at CRE8 Studio. Podcast, music and content production at a flat £40/hr in Cannock, Staffordshire.">
   <meta property="og:image" content="https://cre8-studio.net/img/og-image-v2.png">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Book a Session — CRE8 Studio Cannock">
-  <meta name="twitter:description" content="Book your recording session at CRE8 Studio. Podcast, music and content production from £45/hr in Cannock, Staffordshire.">
+  <meta name="twitter:description" content="Book your recording session at CRE8 Studio. Podcast, music and content production at a flat £40/hr in Cannock, Staffordshire.">
   <meta name="twitter:image" content="https://cre8-studio.net/img/og-image-v2.png">
 
   <!-- Structured Data -->
@@ -27,7 +27,7 @@
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "name": "CRE8 Studio",
-    "description": "Professional recording studio in Cannock, Staffordshire. Music recording, podcast production and content creation from £45/hr.",
+    "description": "Professional recording studio in Cannock, Staffordshire. Music recording, podcast production and content creation at a flat £40/hr.",
     "url": "https://cre8-studio.net",
     "telephone": "+447472367935",
     "email": "info@cre8-studio.net",
@@ -61,7 +61,7 @@
           },
           "priceSpecification": {
             "@type": "UnitPriceSpecification",
-            "price": "45",
+            "price": "40",
             "priceCurrency": "GBP",
             "unitText": "per hour"
           }
@@ -75,7 +75,7 @@
           },
           "priceSpecification": {
             "@type": "UnitPriceSpecification",
-            "price": "45",
+            "price": "40",
             "priceCurrency": "GBP",
             "unitText": "per hour"
           }
@@ -100,7 +100,7 @@
   <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting-cells.css">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/style.css?v=3">
+  <link rel="stylesheet" href="css/style.css?v=6">
 
   <style>
     /* ── CONTACT FORM ── */
@@ -159,8 +159,8 @@
     <a href="index.html" class="nav-logo"><img src="img/logo/cre8-logo.png" alt="CRE8 Studio Cannock"></a>
     <ul class="nav-links">
       <li><a href="about.html">About</a></li>
-      <li><a href="podcast.html">Podcast</a></li>
       <li><a href="music.html">Music</a></li>
+      <li><a href="podcast.html">Podcast</a></li>
       <li><a href="gallery.html">Gallery</a></li>
       <li><a href="contact.html" class="nav-cta">Book Now</a></li>
     </ul>
@@ -171,8 +171,8 @@
 
   <div class="nav-overlay">
     <a href="about.html">About</a>
-    <a href="podcast.html">Podcast</a>
     <a href="music.html">Music</a>
+    <a href="podcast.html">Podcast</a>
     <a href="gallery.html">Gallery</a>
     <a href="contact.html" style="color:var(--orange)">Book Now</a>
   </div>
@@ -214,12 +214,12 @@
           <label class="form-label" for="service">What Are You Booking?</label>
           <select id="service" name="service" class="form-input">
             <option value="">Select a service...</option>
-            <option value="music-hourly">Music — Hourly (£45/hr solo / £75/hr multi-track)</option>
-            <option value="music-half">Music — Half Day (£250 / 4hrs)</option>
-            <option value="music-full">Music — Full Day (£450 / 8hrs)</option>
-            <option value="podcast-hourly">Podcast — Hourly (£45/hr audio / £75/hr audio+video)</option>
-            <option value="podcast-half">Podcast — Half Day (£250 / 4hrs)</option>
-            <option value="podcast-full">Podcast — Full Day (£450 / 8hrs)</option>
+            <option value="music-hourly">Music — Hourly (£40/hr, 2hr minimum)</option>
+            <option value="music-half">Music — Half Day (£150 / 4hrs)</option>
+            <option value="music-full">Music — Full Day (£300 / 8hrs)</option>
+            <option value="podcast-hourly">Podcast — Hourly (£40/hr, 2hr minimum)</option>
+            <option value="podcast-half">Podcast — Half Day (£150 / 4hrs)</option>
+            <option value="podcast-full">Podcast — Full Day (£300 / 8hrs)</option>
             <option value="not-sure">Not sure yet — want to discuss</option>
           </select>
         </div>
@@ -281,20 +281,16 @@
         <span class="t-label" style="display:block; margin-bottom:16px">Quick Reference</span>
         <div style="display:flex; flex-direction:column; gap:10px">
           <div style="display:flex; justify-content:space-between; align-items:center; font-family:var(--font-ui); font-size:12px; letter-spacing:0.06em">
-            <span style="color:var(--muted)">Hourly (Solo / Music)</span>
-            <span style="color:var(--orange); font-weight:700">£45/hr</span>
-          </div>
-          <div style="display:flex; justify-content:space-between; align-items:center; font-family:var(--font-ui); font-size:12px; letter-spacing:0.06em">
-            <span style="color:var(--muted)">Hourly (Multi-Track / A+V)</span>
-            <span style="color:var(--orange); font-weight:700">£75/hr</span>
+            <span style="color:var(--muted)">Hourly (2hr minimum)</span>
+            <span style="color:var(--orange); font-weight:700">£40/hr</span>
           </div>
           <div style="display:flex; justify-content:space-between; align-items:center; font-family:var(--font-ui); font-size:12px; letter-spacing:0.06em">
             <span style="color:var(--muted)">Half Day (4hrs)</span>
-            <span style="color:var(--orange); font-weight:700">£250</span>
+            <span style="color:var(--orange); font-weight:700">£150</span>
           </div>
           <div style="display:flex; justify-content:space-between; align-items:center; font-family:var(--font-ui); font-size:12px; letter-spacing:0.06em">
             <span style="color:var(--muted)">Full Day (8hrs)</span>
-            <span style="color:var(--orange); font-weight:700">£450</span>
+            <span style="color:var(--orange); font-weight:700">£300</span>
           </div>
         </div>
       </div>
@@ -334,8 +330,8 @@
       <div>Cannock, Staffordshire</div>
     </div>
     <nav class="footer-nav">
-      <a href="podcast.html">Podcast Packages</a>
       <a href="music.html">Music Packages</a>
+      <a href="podcast.html">Podcast Packages</a>
       <a href="gallery.html">Gallery</a>
       <a href="about.html">About</a>
       <a href="contact.html" class="footer-cta">Book Now →</a>

@@ -541,6 +541,8 @@ ul {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  /* Portrait source in a landscape panel — anchor to the top of the frame */
+  object-position: center top;
   z-index: 0;
 }
 
@@ -732,12 +734,12 @@ ul {
 .fc-recording .feature-card-bg {
   background:
     radial-gradient(ellipse at 50% 30%, rgba(232,88,10,0.1) 0%, transparent 60%),
-    url('../img/Photos/Music engineers desk.jpeg') center/cover no-repeat;
+    url('../img/Photos/control-room-1.jpg') center/cover no-repeat;
 }
 .fc-mix .feature-card-bg {
   background:
     radial-gradient(ellipse at 50% 50%, rgba(232,88,10,0.22) 0%, transparent 60%),
-    url('../img/Photos/Music engineers desk 2.png') center/cover no-repeat;
+    url('../img/Photos/control-room-2.jpg') center/cover no-repeat;
 }
 .fc-video .feature-card-bg {
   background:
@@ -884,6 +886,9 @@ ul {
 
 .pkg-name { color: var(--cream); margin-bottom: 12px; }
 
+/* Keep price rows aligned across cards with 1- and 2-line names */
+.packages-row .pkg-name { min-height: 1.9em; }
+
 .pkg-price-big {
   font-family: var(--font-ui);
   font-size: 42px;
@@ -896,6 +901,16 @@ ul {
   font-size: 13px;
   color: var(--muted);
   margin-left: 4px;
+}
+
+.pkg-min {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-top: 10px;
 }
 
 .pkg-features {
