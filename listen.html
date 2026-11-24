@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+  <title>CRE8 Studio — Listen &amp; Watch | Cannock</title>
+  <meta name="description" content="Live sessions, tracks and podcasts recorded at CRE8 Studio, Cannock. Watch CRE8 LIVE on YouTube and listen on SoundCloud.">
+  <!-- DEMO PAGE: not yet linked from the rest of the site -->
+  <meta name="robots" content="noindex">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css">
+  <link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting-cells.css">
+  <link rel="stylesheet" href="css/style.css?v=7">
+
+  <style>
+    /* ── FILTER TABS ── */
+    .filter-bar {
+      display: flex; gap: 8px; flex-wrap: wrap;
+      padding: 28px var(--space-xl);
+      background: var(--off-black);
+      border-bottom: 0.5px solid var(--border-dim);
+      position: sticky; top: var(--nav-height); z-index: var(--z-above);
+    }
+    .filter-btn {
+      background: none; border: 0.5px solid var(--border-mid); color: var(--muted);
+      font-family: var(--font-ui); font-size: 12px; font-weight: 600;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      padding: 9px 18px; border-radius: 2px; cursor: pointer;
+      transition: all var(--t-base);
+    }
+    .filter-btn:hover { color: var(--cream); border-color: var(--cream); }
+    .filter-btn.active { background: var(--orange); border-color: var(--orange); color: var(--black); }
+
+    /* ── VIDEO PLAYER (click-to-load) ── */
+    .player {
+      position: relative; aspect-ratio: 16 / 9; width: 100%;
+      background: #000; overflow: hidden; cursor: pointer;
+      border-top: 3px solid var(--orange);
+    }
+    .player img { width: 100%; height: 100%; object-fit: cover; transition: transform var(--t-slow) var(--ease-out), opacity var(--t-base); opacity: 0.82; }
+    .player:hover img { transform: scale(1.03); opacity: 1; }
+    .player::after {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(to top, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0) 55%);
+    }
+    .player iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .player.loaded::after { display: none; }
+    .play-btn {
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+      width: 84px; height: 84px; border-radius: 50%; border: none;
+      background: var(--orange); z-index: 2; cursor: pointer;
+      display: grid; place-items: center;
+      box-shadow: 0 0 0 0 rgba(232,88,10,0.5);
+      transition: transform var(--t-base), background var(--t-base);
+      animation: pulse 2.4s infinite;
+    }
+    .play-btn::before {
+      content: ""; display: block; margin-left: 6px;
+      border-left: 22px solid var(--black);
+      border-top: 14px solid transparent; border-bottom: 14px solid transparent;
+    }
+    .player:hover .play-btn { transform: translate(-50%, -50%) scale(1.08); background: var(--orange-light); }
+    @keyframes pulse {
+      0%   { box-shadow: 0 0 0 0 rgba(232,88,10,0.45); }
+      70%  { box-shadow: 0 0 0 22px rgba(232,88,10,0); }
+      100% { box-shadow: 0 0 0 0 rgba(232,88,10,0); }
+    }
+    .player-caption {
+      position: absolute; left: 24px; right: 24px; bottom: 20px; z-index: 2;
+      font-family: var(--font-display); font-size: clamp(26px, 3vw, 40px); line-height: 1; color: var(--cream);
+      pointer-events: none;
+    }
+    .player-caption small {
+      display: block; font-family: var(--font-ui); font-size: 11px; font-weight: 600;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--orange); margin-bottom: 6px;
+    }
+    .player.loaded .player-caption, .player.loaded .play-btn { display: none; }
+
+    /* ── FEATURED ── */
+    .featured {
+      display: grid; grid-template-columns: 1.6fr 1fr; gap: var(--panel-gap);
+      margin-top: var(--panel-gap);
+    }
+    .featured-info { background: var(--surface); padding: 52px 48px; display: flex; flex-direction: column; justify-content: center; }
+
+    /* ── ARTIST BLOCK ── */
+    .entry {
+      display: grid; grid-template-columns: 1fr 1.5fr; gap: var(--panel-gap);
+      margin-top: var(--panel-gap);
+    }
+    .entry:nth-of-type(even) .entry-info { order: 2; }
+    .entry-info { background: var(--surface); padding: 48px; position: relative; }
+    .entry-media { background: var(--off-black); padding: 24px; display: flex; flex-direction: column; gap: 14px; }
+    .entry-type {
+      display: inline-block; font-family: var(--font-ui); font-size: 10px; font-weight: 700;
+      letter-spacing: 0.2em; text-transform: uppercase; color: var(--black);
+      background: var(--orange); padding: 4px 10px; border-radius: 2px; margin-bottom: 18px;
+    }
+    .entry-type.podcast { background: var(--cream); }
+    .entry-name { font-family: var(--font-display); font-size: clamp(44px, 5vw, 72px); line-height: 0.9; color: var(--cream); margin-bottom: 18px; }
+    .entry-quote { font-family: var(--font-serif); font-style: italic; font-size: 20px; line-height: 1.3; color: var(--cream); margin-bottom: 16px; }
+    .entry-credits {
+      display: flex; flex-wrap: wrap; gap: 6px 14px; margin: 22px 0 26px;
+      font-family: var(--font-ui); font-size: 11px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted);
+    }
+    .entry-credits span::before { content: "✓ "; color: var(--orange); }
+
+    .link-row { display: flex; flex-wrap: wrap; gap: 8px; }
+    .link-chip {
+      font-family: var(--font-ui); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--cream); border: 0.5px solid var(--border-mid); padding: 8px 14px; border-radius: 2px;
+      transition: all var(--t-base); display: inline-flex; align-items: center; gap: 8px;
+    }
+    .link-chip:hover { border-color: var(--orange); color: var(--orange); }
+    .link-chip.placeholder { border-style: dashed; color: var(--muted); }
+    .link-chip.placeholder::after { content: "add link"; font-size: 9px; color: var(--orange); letter-spacing: 0.1em; }
+
+    /* Track list under main player */
+    .tracklist { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
+    .track {
+      background: none; border: 0.5px solid var(--border-dim); padding: 0; cursor: pointer; text-align: left;
+      color: var(--muted); transition: border-color var(--t-base), color var(--t-base);
+    }
+    .track img { aspect-ratio: 16/9; width: 100%; opacity: 0.6; transition: opacity var(--t-base); }
+    .track span { display: block; padding: 8px 10px; font-family: var(--font-ui); font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+    .track:hover img, .track.active img { opacity: 1; }
+    .track.active { border-color: var(--orange); color: var(--cream); }
+    .track.active span::before { content: "▶ "; color: var(--orange); }
+
+    /* ── SOUNDCLOUD (demo-styled frame) ── */
+    .sc-frame { background: var(--surface); border-top: 3px solid var(--orange); padding: 20px; display: grid; grid-template-columns: 120px 1fr; gap: 20px; align-items: center; }
+    .sc-art { aspect-ratio: 1; background: linear-gradient(135deg, var(--orange) 0%, #6b2604 100%); display: grid; place-items: center; font-family: var(--font-display); font-size: 40px; color: var(--black); }
+    .sc-top { display: flex; align-items: center; gap: 14px; margin-bottom: 12px; }
+    .sc-play { width: 46px; height: 46px; flex-shrink: 0; border-radius: 50%; border: none; background: var(--orange); cursor: pointer; display: grid; place-items: center; }
+    .sc-play::before { content: ""; margin-left: 4px; border-left: 14px solid var(--black); border-top: 9px solid transparent; border-bottom: 9px solid transparent; }
+    .sc-play.playing::before { margin: 0; width: 12px; height: 14px; border: none; border-left: 4px solid var(--black); border-right: 4px solid var(--black); }
+    .sc-title { font-family: var(--font-ui); font-size: 16px; font-weight: 700; letter-spacing: 0.04em; color: var(--cream); line-height: 1.2; }
+    .sc-artist { font-size: 12px; color: var(--muted); }
+    .sc-wave { display: flex; align-items: center; gap: 2px; height: 48px; }
+    .sc-wave i { flex: 1; background: var(--surface-mid); border-radius: 1px; transition: background 0.2s; }
+    .sc-wave i.on { background: var(--orange); }
+    .sc-note { font-family: var(--font-ui); font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-top: 10px; }
+
+    /* ── DAN'S SHOW ── */
+    .show { margin-top: var(--panel-gap); background: var(--off-black); }
+    .show-head {
+      display: grid; grid-template-columns: 1.3fr 1fr; gap: var(--space-xl); align-items: end;
+      padding: var(--space-2xl) var(--space-xl) var(--space-xl);
+      background: linear-gradient(135deg, rgba(232,88,10,0.16) 0%, rgba(10,10,10,0) 60%);
+      border-top: 3px solid var(--orange); position: relative; overflow: hidden;
+    }
+    .show-host { display: flex; align-items: center; gap: 14px; margin-top: 24px; }
+    .show-host img { width: 52px; height: 52px; border-radius: 50%; border: 2px solid var(--orange); }
+    .show-host div { font-family: var(--font-ui); font-size: 12px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); line-height: 1.4; }
+    .show-host strong { color: var(--cream); display: block; font-size: 15px; letter-spacing: 0.08em; }
+    .episodes { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--panel-gap); }
+    .episode { background: var(--surface); display: flex; flex-direction: column; }
+    .episode .player { border-top: none; }
+    .episode-body { padding: 26px 26px 30px; display: flex; flex-direction: column; flex: 1; }
+    .episode-num { font-family: var(--font-ui); font-size: 11px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--orange); margin-bottom: 10px; }
+    .episode-guest { font-family: var(--font-display); font-size: 36px; line-height: 0.95; color: var(--cream); margin-bottom: 4px; }
+    .episode-guest small { display: block; font-family: var(--font-ui); font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+    .episode .t-body { margin: 10px 0 20px; flex: 1; }
+    .episode .link-chip { font-size: 11px; padding: 6px 11px; }
+    .section-divider {
+      padding: var(--space-xl) var(--space-xl) var(--space-md); margin-top: var(--panel-gap);
+    }
+
+    /* ── CHANNEL STRIP ── */
+    .channels { display: grid; grid-template-columns: 1fr 1fr; gap: var(--panel-gap); margin-top: var(--panel-gap); }
+    .channel { padding: 52px 48px; position: relative; overflow: hidden; }
+    .channel.yt { background: var(--surface); }
+    .channel.sc { background: var(--surface-mid); }
+    .channel-big { position: absolute; right: -10px; bottom: -30px; font-family: var(--font-display); font-size: 180px; line-height: 1; color: rgba(232,88,10,0.06); pointer-events: none; user-select: none; }
+
+    .demo-banner {
+      background: repeating-linear-gradient(45deg, var(--orange), var(--orange) 12px, #c94b08 12px, #c94b08 24px);
+      color: var(--black); text-align: center; padding: 8px 16px;
+      font-family: var(--font-ui); font-size: 12px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase;
+      position: relative; z-index: var(--z-nav); margin-top: var(--nav-height);
+    }
+    .is-hidden { display: none !important; }
+
+    @media (max-width: 900px) {
+      .featured, .entry, .channels { grid-template-columns: 1fr; }
+      .entry:nth-of-type(even) .entry-info { order: 0; }
+      .entry-info, .featured-info, .channel { padding: 36px 24px; }
+      .entry-media { padding: 16px; }
+      .filter-bar { padding: 12px 16px; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; }
+      .filter-bar::-webkit-scrollbar { display: none; }
+      .filter-btn { flex-shrink: 0; padding: 8px 14px; font-size: 11px; }
+      .play-btn { width: 64px; height: 64px; }
+      .sc-frame { grid-template-columns: 72px 1fr; gap: 14px; }
+      .show-head { grid-template-columns: 1fr; gap: var(--space-md); padding: var(--space-xl) 24px 36px; }
+      .episodes { grid-template-columns: 1fr; }
+      .section-divider { padding: 40px 24px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo"><img src="img/logo/cre8-logo.png" alt="CRE8 Studio Cannock"></a>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="music.html">Music</a></li>
+      <li><a href="podcast.html">Podcast</a></li>
+      <li><a href="listen.html" class="active">Listen</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html" class="nav-cta">Book Now</a></li>
+    </ul>
+    <div class="nav-hamburger" aria-label="Open menu">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+  <div class="nav-overlay">
+    <a href="about.html">About</a>
+    <a href="music.html">Music</a>
+    <a href="podcast.html">Podcast</a>
+    <a href="listen.html">Listen</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="contact.html" style="color:var(--orange)">Book Now</a>
+  </div>
+
+  <div class="demo-banner">Demo page — intros &amp; dashed links are placeholders</div>
+
+  <!-- ── 1. HERO ── -->
+  <section class="page-hero" style="padding-top:var(--space-2xl)">
+    <span class="label-line page-hero-label">Recorded at CRE8 Studio · Cannock</span>
+    <h1 class="page-hero-title t-display-xl" style="max-width:800px; color:var(--cream)">
+      HEAR<br>THE WORK
+    </h1>
+    <p class="page-hero-sub t-body-lg" style="max-width:560px; margin-top:20px">
+      Live sessions, finished tracks and podcast episodes, all recorded, mixed and filmed in our Cannock studio. Press play, find a new favourite artist, then come and make your own.
+    </p>
+    <div style="margin-top:32px; display:flex; gap:16px; flex-wrap:wrap">
+      <a href="https://www.youtube.com/@CRE8_Cannock" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Watch on YouTube →</a>
+      <a href="#soundcloud" class="btn btn-ghost">Listen on SoundCloud</a>
+    </div>
+    <div aria-hidden="true" style="position:absolute; top:40px; right:60px; font-family:var(--font-display); font-size:240px; color:rgba(232,88,10,0.04); line-height:1; pointer-events:none; user-select:none">▶</div>
+  </section>
+
+  <!-- ── 2. FILTERS ── -->
+  <div class="filter-bar" role="tablist" aria-label="Filter content">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="live">CRE8 Live</button>
+    <button class="filter-btn" data-filter="track">Tracks</button>
+    <button class="filter-btn" data-filter="show">Dan's Podcast</button>
+    <button class="filter-btn" data-filter="podcast">Produced at CRE8</button>
+  </div>
+
+  <!-- ── 3. FEATURED ── -->
+  <section class="featured" data-type="live">
+    <div class="player" data-id="cuq3WteQ1F4" data-title="Bo Bardot — Showgirl">
+      <img src="https://i.ytimg.com/vi/cuq3WteQ1F4/hqdefault.jpg" alt="Bo Bardot performing Showgirl at CRE8 Studio" loading="lazy">
+      <button class="play-btn" aria-label="Play Bo Bardot — Showgirl"></button>
+      <div class="player-caption"><small>Latest · CRE8 Live</small>Bo Bardot — Showgirl</div>
+    </div>
+    <div class="featured-info" data-reveal>
+      <span class="t-label" style="margin-bottom:16px">Latest Session</span>
+      <h2 class="t-display-md" style="color:var(--cream); margin-bottom:18px">NEW ON<br>CRE8 LIVE</h2>
+      <p class="t-body" style="margin-bottom:28px">Our newest live session: Bo Bardot playing "Showgirl", tracked live in the room and filmed on our multi-cam setup. Recorded, mixed and edited on site at CRE8.</p>
+      <div class="link-row">
+        <a class="link-chip" href="https://www.youtube.com/watch?v=cuq3WteQ1F4" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a>
+        <a class="link-chip" href="#bo-bardot">More from Bo Bardot ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── 4. DAN'S OWN PODCAST (rendered from SHOW below) ── -->
+  <section class="show" id="dans-podcast" data-type="show"></section>
+
+  <!-- ── 5. MUSIC: live sessions + tracks (rendered from ENTRIES below) ── -->
+  <div id="entries"></div>
+
+  <!-- ── 6. CLIENT PODCASTS produced at the studio ── -->
+  <div class="section-divider" data-type="podcast">
+    <span class="label-line" style="margin-bottom:18px">Client Work · Podcasts</span>
+    <h2 class="t-display-md" style="color:var(--cream)">PRODUCED<br>AT CRE8</h2>
+    <p class="t-body" style="max-width:560px; margin-top:16px">Shows that other people host, recorded, filmed and edited in our studio. Each one is their podcast, made with our cameras, mics and edit.</p>
+  </div>
+  <div id="client-podcasts"></div>
+
+  <!-- ── 5. CHANNELS ── -->
+  <section class="channels" id="channels">
+    <div class="channel yt" data-reveal>
+      <span class="t-label" style="display:block; margin-bottom:16px">YouTube</span>
+      <h2 class="t-display-sm" style="color:var(--cream); margin-bottom:16px">EVERY SESSION,<br>ON CAMERA</h2>
+      <p class="t-body" style="max-width:380px; margin-bottom:28px">Subscribe to catch every new CRE8 LIVE session and podcast episode the day it drops.</p>
+      <a href="https://www.youtube.com/@CRE8_Cannock?sub_confirmation=1" target="_blank" rel="noopener noreferrer" class="btn btn-primary">Subscribe →</a>
+      <div class="channel-big" aria-hidden="true">▶</div>
+    </div>
+    <div class="channel sc" data-reveal data-reveal-delay="0.1">
+      <span class="t-label" style="display:block; margin-bottom:16px">SoundCloud</span>
+      <h2 class="t-display-sm" style="color:var(--cream); margin-bottom:16px">THE TRACKS,<br>IN FULL</h2>
+      <p class="t-body" style="max-width:380px; margin-bottom:28px">Finished mixes and masters from the studio. Follow us to hear new releases first.</p>
+      <a href="#" class="btn btn-ghost">Follow on SoundCloud →</a>
+      <div class="channel-big" aria-hidden="true">♪</div>
+    </div>
+  </section>
+
+  <!-- ── 6. CTA BAND ── -->
+  <div style="background:var(--orange); padding:var(--space-2xl) var(--space-xl); display:flex; align-items:center; justify-content:space-between; gap:var(--space-xl); flex-wrap:wrap; margin-top:var(--panel-gap)">
+    <div>
+      <span style="font-family:var(--font-ui); font-size:10px; font-weight:700; letter-spacing:0.26em; text-transform:uppercase; color:rgba(0,0,0,0.4); display:block; margin-bottom:14px">Your Turn</span>
+      <h2 style="font-family:var(--font-display); font-size:clamp(52px,6vw,84px); line-height:0.9; color:var(--black); margin-bottom:20px">WANT TO BE<br>ON THIS PAGE?</h2>
+      <p style="font-size:14px; color:rgba(0,0,0,0.6); max-width:380px; margin-bottom:32px; font-weight:300">Book a session and we'll record, mix and film it. The best ones end up right here.</p>
+      <div style="display:flex; gap:14px; flex-wrap:wrap; align-items:center">
+        <a href="contact.html" class="btn btn-dark">Book a Session →</a>
+        <a href="tel:07472367935" style="font-family:var(--font-ui); font-size:12px; font-weight:600; letter-spacing:0.16em; text-transform:uppercase; color:rgba(0,0,0,0.55)">Call 07472 367935</a>
+      </div>
+    </div>
+    <div aria-hidden="true" style="font-family:var(--font-display); font-size:clamp(80px,12vw,160px); color:rgba(0,0,0,0.08); line-height:1; user-select:none">LIVE</div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <div>
+      <div class="footer-logo"><img src="img/logo/cre8-logo.png" alt="CRE8 Studio Cannock"></div>
+      <div class="footer-location">Cannock · Staffordshire</div>
+    </div>
+    <div class="footer-info">
+      <div><a href="tel:07472367935">Call Now: 07472 367935</a></div>
+      <div><a href="mailto:info@cre8-studio.net">info@cre8-studio.net</a></div>
+      <div><a href="https://cre8-studio.net" target="_blank" rel="noopener noreferrer">cre8-studio.net</a></div>
+      <div><a href="https://www.youtube.com/@CRE8_Cannock" target="_blank" rel="noopener noreferrer">YouTube</a></div>
+      <div>Cannock, Staffordshire</div>
+    </div>
+    <nav class="footer-nav">
+      <a href="music.html">Music Packages</a>
+      <a href="podcast.html">Podcast Packages</a>
+      <a href="listen.html">Listen</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="about.html">About</a>
+      <a href="contact.html" class="footer-cta">Book Now →</a>
+    </nav>
+    <div class="footer-bottom">
+      <p>© 2026 CRE8 Studio Cannock. All rights reserved.</p>
+      <p><a href="privacy.html" style="color:inherit; opacity:0.5; text-decoration:none;">Privacy Policy</a> · Professional Recording · Cannock · Staffordshire</p>
+    </div>
+  </footer>
+
+  <script>
+  /* ════════════════════════════════════════════════════════
+     CONTENT — add a new artist / track / episode by copying
+     one block. type: "live" | "track" | "podcast"
+     A link with url "" shows as a dashed "add link" chip.
+     ════════════════════════════════════════════════════════ */
+  const ENTRIES = [
+    {
+      id: "bo-bardot",
+      type: "live",
+      name: "Bo Bardot",
+      quote: "Three songs, one take each, no safety net.",
+      intro: "Bo Bardot came in for a full CRE8 LIVE session and played three originals straight to camera: “Showgirl”, “The Backstory” and “The State I’m In”. [Placeholder: a line about who Bo Bardot is, where they’re from, and what to listen out for.]",
+      credits: ["Live tracking", "Mix & master", "Multi-cam video"],
+      links: [
+        { label: "Website", url: "" },
+        { label: "Facebook", url: "" },
+        { label: "Instagram", url: "" },
+        { label: "Spotify", url: "" }
+      ],
+      videos: [
+        { id: "cuq3WteQ1F4", title: "Showgirl" },
+        { id: "RdSrUT9nCYk", title: "The Backstory" },
+        { id: "KpzRp7Jb3o8", title: "The State I'm In" }
+      ]
+    },
+    {
+      id: "homecoming-uk",
+      type: "live",
+      name: "Homecoming UK",
+      quote: "A full band, a full room, and three tracks played live.",
+      intro: "Homecoming UK brought the full band setup into the studio for “Caitlin”, “DKMS” and “BJ’s In Your PJ’s”, all tracked live in the room. [Placeholder: band background, line-up, and any gigs or releases coming up.]",
+      credits: ["Full band tracking", "Mix & master", "Multi-cam video"],
+      links: [
+        { label: "Website", url: "" },
+        { label: "Facebook", url: "" },
+        { label: "Instagram", url: "" }
+      ],
+      videos: [
+        { id: "K5n4keDqirs", title: "Caitlin" },
+        { id: "aqWtvt9z2kg", title: "DKMS" },
+        { id: "KI8FDLQy19E", title: "BJ's In Your PJ's" }
+      ]
+    },
+    {
+      id: "leyla-harputlu",
+      type: "live",
+      name: "Leyla Harputlu",
+      quote: "Two covers, completely reworked.",
+      intro: "Leyla Harputlu put her own spin on two very different songs: Paramore’s “Decode” and Britney Spears’ “Toxic”. [Placeholder: a line about Leyla, her own material, and where to follow her.]",
+      credits: ["Vocal recording", "Mix & master", "Multi-cam video"],
+      links: [
+        { label: "Instagram", url: "" },
+        { label: "TikTok", url: "" }
+      ],
+      videos: [
+        { id: "1ZEAsqsQCJA", title: "Decode (Paramore Cover)" },
+        { id: "VfPcO9SGjk8", title: "Toxic (Britney Cover)" }
+      ]
+    },
+    {
+      id: "soundcloud",
+      type: "track",
+      name: "Studio Tracks",
+      quote: "Finished mixes, straight off the desk.",
+      intro: "[Placeholder] This is where SoundCloud tracks will sit. Each track gets the same treatment: a short intro to the artist, what we did on it, and links to their pages. The player below shows the styling. Once I have your SoundCloud link, the real SoundCloud player loads here with the orange theme.",
+      credits: ["Recording", "Production", "Mix & master"],
+      links: [
+        { label: "Artist website", url: "" },
+        { label: "Facebook", url: "" },
+        { label: "SoundCloud", url: "" }
+      ],
+      soundcloud: [
+        { title: "Track title one", artist: "Artist name" },
+        { title: "Track title two", artist: "Artist name" }
+      ]
+    },
+    {
+      id: "podcast-example",
+      type: "podcast",
+      name: "Client Podcast Name",
+      quote: "Episode title goes here.",
+      intro: "[Placeholder] A client’s podcast recorded at CRE8 sits here: what their show is about, who hosts it, and who was on this episode, with links to the podcast’s own website and where to subscribe.",
+      credits: ["Multi-cam recording", "Edit & post", "Social clips"],
+      links: [
+        { label: "Podcast website", url: "" },
+        { label: "Spotify", url: "" },
+        { label: "Apple Podcasts", url: "" },
+        { label: "Instagram", url: "" }
+      ],
+      videos: [
+        { id: "", title: "Episode 1" }
+      ]
+    }
+  ];
+
+  /* ════════════════════════════════════════════════════════
+     DAN'S OWN PODCAST — one show, one block per episode.
+     guestRef: the id of the artist's block above (adds a
+     "Hear their session" button), or "" if there isn't one.
+     ════════════════════════════════════════════════════════ */
+  const SHOW = {
+    name: "CRE8 Podcast",
+    tagline: "Bands in the room, talking about the music.",
+    intro: "Dan’s own show. Each episode, a band or artist from the local scene sits down in the studio to talk about how they started, how they write, and what it’s really like gigging round the Midlands. Most of them play a track live before they leave. [Placeholder: Dan’s own description of the show.]",
+    host: { name: "Dan Richardson", role: "Host · Producer", photo: "img/about-dan.jpg" },
+    links: [
+      { label: "YouTube playlist", url: "" },
+      { label: "Spotify", url: "" },
+      { label: "Apple Podcasts", url: "" }
+    ],
+    episodes: [
+      {
+        num: 3, guest: "Guest Name", guestType: "Band / Artist", youtube: "",
+        intro: "[Placeholder] Who was on, what they talked about, and one reason to listen.",
+        guestRef: "",
+        links: [{ label: "Website", url: "" }, { label: "Instagram", url: "" }]
+      },
+      {
+        num: 2, guest: "Guest Name", guestType: "Band / Artist", youtube: "",
+        intro: "[Placeholder] Who was on, what they talked about, and one reason to listen.",
+        guestRef: "",
+        links: [{ label: "Facebook", url: "" }, { label: "Instagram", url: "" }]
+      },
+      {
+        num: 1, guest: "Guest Name", guestType: "Band / Artist", youtube: "",
+        intro: "[Placeholder] Who was on, what they talked about, and one reason to listen.",
+        guestRef: "",
+        links: [{ label: "Website", url: "" }, { label: "Facebook", url: "" }]
+      }
+    ]
+  };
+
+  /* ── RENDER ── */
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;" }[c]));
+  const typeLabel = { live: "CRE8 Live", track: "Track", podcast: "Produced at CRE8" };
+  const thumb = id => id ? `https://i.ytimg.com/vi/${id}/hqdefault.jpg` : "img/about-studio.jpg";
+
+  function linkChips(links) {
+    return links.map(l => l.url
+      ? `<a class="link-chip" href="${esc(l.url)}" target="_blank" rel="noopener noreferrer">${esc(l.label)} ↗</a>`
+      : `<span class="link-chip placeholder">${esc(l.label)}</span>`).join("");
+  }
+
+  function videoMedia(e) {
+    const first = e.videos[0];
+    const list = e.videos.length > 1 ? `<div class="tracklist">${e.videos.map((v, i) => `
+      <button class="track${i === 0 ? " active" : ""}" data-id="${esc(v.id)}" data-title="${esc(e.name + " — " + v.title)}">
+        <img src="${thumb(v.id)}" alt="" loading="lazy"><span>${esc(v.title)}</span>
+      </button>`).join("")}</div>` : "";
+    return `
+      <div class="player" data-id="${esc(first.id)}" data-title="${esc(e.name + " — " + first.title)}">
+        <img src="${thumb(first.id)}" alt="${esc(e.name)} at CRE8 Studio" loading="lazy">
+        <button class="play-btn" aria-label="Play ${esc(e.name)} — ${esc(first.title)}"></button>
+        <div class="player-caption"><small>${typeLabel[e.type]}</small>${esc(first.title)}</div>
+      </div>${list}`;
+  }
+
+  function scMedia(e) {
+    return e.soundcloud.map(t => `
+      <div class="sc-frame">
+        <div class="sc-art">CRE8</div>
+        <div>
+          <div class="sc-top">
+            <button class="sc-play" aria-label="Play ${esc(t.title)}"></button>
+            <div><div class="sc-title">${esc(t.title)}</div><div class="sc-artist">${esc(t.artist)}</div></div>
+          </div>
+          <div class="sc-wave">${Array.from({ length: 64 }, () => `<i style="height:${18 + Math.round(Math.random() * 82)}%"></i>`).join("")}</div>
+          <div class="sc-note">Demo player · real SoundCloud embed goes here</div>
+        </div>
+      </div>`).join("");
+  }
+
+  document.getElementById("dans-podcast").innerHTML = `
+    <div class="show-head">
+      <div data-reveal>
+        <span class="label-line" style="margin-bottom:18px">Hosted by Dan · Our Own Show</span>
+        <h2 class="t-display-lg" style="color:var(--cream)">${esc(SHOW.name).toUpperCase().replace(" ", "<br>")}</h2>
+        <p class="t-serif-md" style="color:var(--cream); margin-top:16px">${esc(SHOW.tagline)}</p>
+      </div>
+      <div data-reveal data-reveal-delay="0.1">
+        <p class="t-body" style="margin-bottom:22px">${esc(SHOW.intro)}</p>
+        <div class="link-row">${linkChips(SHOW.links)}</div>
+        <div class="show-host">
+          <img src="${esc(SHOW.host.photo)}" alt="${esc(SHOW.host.name)}">
+          <div><strong>${esc(SHOW.host.name)}</strong>${esc(SHOW.host.role)}</div>
+        </div>
+      </div>
+    </div>
+    <div class="episodes">${SHOW.episodes.map(ep => `
+      <article class="episode">
+        <div class="player" data-id="${esc(ep.youtube)}" data-title="${esc(SHOW.name + " Ep " + ep.num + " — " + ep.guest)}">
+          <img src="${thumb(ep.youtube)}" alt="${esc(ep.guest)} on ${esc(SHOW.name)}" loading="lazy">
+          <button class="play-btn" aria-label="Play episode ${ep.num} with ${esc(ep.guest)}"></button>
+          <div class="player-caption"><small>Episode ${ep.num}</small></div>
+        </div>
+        <div class="episode-body">
+          <div class="episode-num">Ep ${String(ep.num).padStart(2, "0")} · In the room with</div>
+          <h3 class="episode-guest"><small>${esc(ep.guestType)}</small>${esc(ep.guest)}</h3>
+          <p class="t-body">${esc(ep.intro)}</p>
+          <div class="link-row">
+            ${ep.guestRef ? `<a class="link-chip" href="#${esc(ep.guestRef)}">Hear their session ↓</a>` : ""}
+            ${linkChips(ep.links)}
+          </div>
+        </div>
+      </article>`).join("")}
+    </div>`;
+
+  document.getElementById("entries").innerHTML = ENTRIES.filter(e => e.type !== "podcast").map(entryHTML).join("");
+  document.getElementById("client-podcasts").innerHTML = ENTRIES.filter(e => e.type === "podcast").map(entryHTML).join("");
+
+  function entryHTML(e) { return `
+    <section class="entry" id="${esc(e.id)}" data-type="${e.type}">
+      <div class="entry-info" data-reveal>
+        <span class="entry-type ${e.type === "podcast" ? "podcast" : ""}">${typeLabel[e.type]}</span>
+        <h2 class="entry-name">${esc(e.name)}</h2>
+        <p class="entry-quote">${esc(e.quote)}</p>
+        <p class="t-body">${esc(e.intro)}</p>
+        <div class="entry-credits">${e.credits.map(c => `<span>${esc(c)}</span>`).join("")}</div>
+        <div class="link-row">${linkChips(e.links)}</div>
+      </div>
+      <div class="entry-media">${e.soundcloud ? scMedia(e) : videoMedia(e)}</div>
+    </section>`; }
+
+  /* ── CLICK-TO-LOAD YOUTUBE ── */
+  function loadVideo(player) {
+    const id = player.dataset.id;
+    if (!id) return; // placeholder entry
+    player.classList.add("loaded");
+    const old = player.querySelector("iframe");
+    if (old) old.remove();
+    const f = document.createElement("iframe");
+    f.src = `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&rel=0&modestbranding=1&playsinline=1`;
+    f.title = player.dataset.title;
+    f.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+    f.allowFullscreen = true;
+    player.appendChild(f);
+  }
+  document.addEventListener("click", ev => {
+    const player = ev.target.closest(".player");
+    if (player && !player.classList.contains("loaded")) { loadVideo(player); return; }
+
+    const track = ev.target.closest(".track");
+    if (track) {
+      const media = track.closest(".entry-media");
+      const p = media.querySelector(".player");
+      media.querySelectorAll(".track").forEach(t => t.classList.toggle("active", t === track));
+      p.dataset.id = track.dataset.id;
+      p.dataset.title = track.dataset.title;
+      p.querySelector("img").src = thumb(track.dataset.id);
+      loadVideo(p);
+      return;
+    }
+
+    // Demo SoundCloud player: animate the waveform
+    const sc = ev.target.closest(".sc-play");
+    if (sc) {
+      const bars = sc.closest(".sc-frame").querySelectorAll(".sc-wave i");
+      const playing = sc.classList.toggle("playing");
+      clearInterval(sc._t);
+      if (playing) {
+        let n = [...bars].filter(b => b.classList.contains("on")).length;
+        sc._t = setInterval(() => {
+          if (n >= bars.length) { n = 0; bars.forEach(b => b.classList.remove("on")); }
+          bars[n++].classList.add("on");
+        }, 120);
+      }
+    }
+  });
+
+  /* ── FILTERS ── */
+  document.querySelectorAll(".filter-btn").forEach(btn => btn.addEventListener("click", () => {
+    const f = btn.dataset.filter;
+    document.querySelectorAll(".filter-btn").forEach(b => b.classList.toggle("active", b === btn));
+    document.querySelectorAll("[data-type]").forEach(el => el.classList.toggle("is-hidden", f !== "all" && el.dataset.type !== f));
+    if (window.ScrollTrigger) ScrollTrigger.refresh();
+  }));
+  </script>
+
+  <script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.14/dist/lenis.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
