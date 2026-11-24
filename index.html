@@ -101,6 +101,40 @@
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/style.css?v=7">
+
+  <style>
+    /* ── HEAR THE WORK (homepage teaser for listen.html) ── */
+    .work-section { background: var(--off-black); padding: var(--space-2xl) var(--space-xl); margin-top: var(--panel-gap); }
+    .work-head { display: flex; justify-content: space-between; align-items: flex-end; gap: var(--space-lg); flex-wrap: wrap; margin-bottom: var(--space-lg); }
+    .work-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--panel-gap); }
+    .work-card { position: relative; display: block; aspect-ratio: 4 / 5; overflow: hidden; background: var(--surface); }
+    .work-card img { width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: transform var(--t-slow) var(--ease-out), opacity var(--t-base); }
+    .work-card:hover img { transform: scale(1.05); opacity: 1; }
+    .work-card::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,10,10,0.92) 0%, rgba(10,10,10,0) 60%); }
+    .work-card-play {
+      position: absolute; top: 20px; right: 20px; z-index: 2; width: 46px; height: 46px; border-radius: 50%;
+      background: var(--orange); display: grid; place-items: center; transition: transform var(--t-base);
+    }
+    .work-card-play::before { content: ""; margin-left: 4px; border-left: 14px solid var(--black); border-top: 9px solid transparent; border-bottom: 9px solid transparent; }
+    .work-card:hover .work-card-play { transform: scale(1.1); }
+    .work-card-text { position: absolute; left: 24px; right: 24px; bottom: 22px; z-index: 2; }
+    .work-card-text .t-label { display: block; margin-bottom: 8px; }
+    .work-card-text h3 { font-family: var(--font-display); font-size: clamp(30px, 2.6vw, 40px); line-height: 0.95; color: var(--cream); }
+    .work-card-text p { font-family: var(--font-ui); font-size: 12px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 6px; }
+    .work-card.podcast { background: var(--orange); }
+    .work-card.podcast::after { display: none; }
+    .work-card.podcast .t-label, .work-card.podcast p { color: rgba(0,0,0,0.55); }
+    .work-card.podcast h3 { color: var(--black); font-size: clamp(40px, 3.6vw, 56px); }
+    .work-card.podcast .work-card-play { background: var(--black); }
+    .work-card.podcast .work-card-play::before { border-left-color: var(--orange); }
+    .work-card-mic { position: absolute; top: 10px; left: 18px; font-family: var(--font-display); font-size: 150px; line-height: 1; color: rgba(0,0,0,0.1); pointer-events: none; }
+    @media (max-width: 1100px) { .work-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 768px) {
+      .work-section { padding: var(--space-xl) 16px; }
+      .work-card { aspect-ratio: 4 / 3; }
+    }
+    @media (max-width: 480px) { .work-grid { grid-template-columns: 1fr; } }
+  </style>
 </head>
 <body>
 
@@ -111,6 +145,7 @@
       <li><a href="about.html">About</a></li>
       <li><a href="music.html">Music</a></li>
       <li><a href="podcast.html">Podcast</a></li>
+      <li><a href="listen.html">Listen</a></li>
       <li><a href="gallery.html">Gallery</a></li>
       <li><a href="contact.html" class="nav-cta">Book Now</a></li>
     </ul>
@@ -123,6 +158,7 @@
     <a href="about.html">About</a>
     <a href="music.html">Music</a>
     <a href="podcast.html">Podcast</a>
+    <a href="listen.html">Listen</a>
     <a href="gallery.html">Gallery</a>
     <a href="contact.html" style="color:var(--orange)">Book Now</a>
   </div>
@@ -247,6 +283,58 @@
     </div>
 
   </div>
+
+
+  <!-- ── SECTION 4b: HEAR THE WORK (links to listen.html) ── -->
+  <section class="work-section">
+    <div class="work-head">
+      <div data-reveal>
+        <span class="label-line" style="margin-bottom:18px">Recorded at CRE8 Studio</span>
+        <h2 class="t-display-md" style="color:var(--cream)">HEAR<br>THE WORK</h2>
+        <p class="t-body" style="max-width:440px; margin-top:16px">Live sessions, tracks and podcasts made in this room. Press play and hear what a CRE8 session sounds like.</p>
+      </div>
+      <a href="listen.html" class="btn btn-primary" data-reveal data-reveal-delay="0.1">Listen &amp; Watch →</a>
+    </div>
+
+    <div class="work-grid" data-reveal-group>
+      <a href="listen.html#bo-bardot" class="work-card" data-reveal-item>
+        <img src="https://i.ytimg.com/vi/cuq3WteQ1F4/hqdefault.jpg" alt="Bo Bardot live at CRE8 Studio" loading="lazy">
+        <span class="work-card-play" aria-hidden="true"></span>
+        <div class="work-card-text">
+          <span class="t-label">CRE8 Live</span>
+          <h3>BO BARDOT</h3>
+          <p>3 live tracks</p>
+        </div>
+      </a>
+      <a href="listen.html#homecoming-uk" class="work-card" data-reveal-item>
+        <img src="https://i.ytimg.com/vi/K5n4keDqirs/hqdefault.jpg" alt="Homecoming UK live at CRE8 Studio" loading="lazy">
+        <span class="work-card-play" aria-hidden="true"></span>
+        <div class="work-card-text">
+          <span class="t-label">CRE8 Live</span>
+          <h3>HOMECOMING UK</h3>
+          <p>3 live tracks</p>
+        </div>
+      </a>
+      <a href="listen.html#leyla-harputlu" class="work-card" data-reveal-item>
+        <img src="https://i.ytimg.com/vi/1ZEAsqsQCJA/hqdefault.jpg" alt="Leyla Harputlu live at CRE8 Studio" loading="lazy">
+        <span class="work-card-play" aria-hidden="true"></span>
+        <div class="work-card-text">
+          <span class="t-label">CRE8 Live</span>
+          <h3>LEYLA HARPUTLU</h3>
+          <p>2 live covers</p>
+        </div>
+      </a>
+      <a href="listen.html#dans-podcast" class="work-card podcast" data-reveal-item>
+        <div class="work-card-mic" aria-hidden="true">CRE8</div>
+        <span class="work-card-play" aria-hidden="true"></span>
+        <div class="work-card-text">
+          <span class="t-label">Hosted by Dan</span>
+          <h3>CRE8<br>PODCAST</h3>
+          <p>Bands in the room, talking music</p>
+        </div>
+      </a>
+    </div>
+  </section>
 
 
   <!-- ── SECTION 5: ORANGE FULL-BLEED BAND ── -->
@@ -390,6 +478,7 @@
     <nav class="footer-nav">
       <a href="music.html">Music Packages</a>
       <a href="podcast.html">Podcast Packages</a>
+      <a href="listen.html">Listen</a>
       <a href="gallery.html">Gallery</a>
       <a href="about.html">About</a>
       <a href="contact.html" class="footer-cta">Book Now →</a>
